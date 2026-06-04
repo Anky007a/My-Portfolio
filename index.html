@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Ankit Malviya — Quality Engineering Manager · Portfolio 2026</title>
+<meta name="description" content="Ankit Malviya — Quality Engineering Manager with 11+ years driving release governance, AI-quality, and people leadership. Pioneered Human-AI Collaboration QA (1,444 tests · 99.8% pass · 512MB pod ceiling)." />
+<meta name="author" content="Ankit Malviya" />
+<meta property="og:title" content="Ankit Malviya — Quality Engineering Manager" />
+<meta property="og:description" content="Quality Engineering Manager · Human-AI Collaboration · 1,444 tests · 99.8% pass · 11+ years." />
+<meta property="og:type" content="profile" />
+<meta property="og:url" content="https://www.ankyai.com/" />
+<meta name="theme-color" content="#0a0a0b" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cstyle%3Etext%7Bfont:700 70px sans-serif;fill:%23ffbe3d%7D%3C/style%3E%3Crect width='100' height='100' rx='20' fill='%230a0a0b'/%3E%3Ctext x='50%25' y='72' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+
+<style>
+  :root {
+    --bg: #0a0a0b;
+    --bg-2: #111114;
+    --panel: #15151a;
+    --panel-2: #1c1c22;
+    --border: #26262e;
+    --border-2: #34343f;
+    --text: #ededed;
+    --muted: #acacba;
+    --dim: #71717a;
+    --accent: #ffbe3d;
+    --accent-2: #ff8a3d;
+    --cyan: #5ce1e6;
+    --green: #4ade80;
+    --red: #f87171;
+    --purple: #c084fc;
+    --blue: #60a5fa;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    line-height: 1.55;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ── Top controller bar ─────────────────────────────── */
+  .top-controller {
+    background: #111114;
+    border-bottom: 1px solid #26262e;
+    padding: 12px 24px;
+    position: sticky; top: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 12px; flex-wrap: wrap;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .alias-text { font-size: 13px; font-weight: 700; color: #ededed; font-family: 'JetBrains Mono', monospace; }
+  .alias-text span { margin-right: 6px; }
+  .alias-link { color: var(--accent); text-decoration: underline; }
+  .top-controller-right { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .view-toggles { display: flex; background: #1c1c22; border: 1px solid #26262e; padding: 4px; border-radius: 12px; }
+  .toggle-btn {
+    background: transparent; border: none; color: var(--muted);
+    font-weight: 700; font-size: 12px; padding: 6px 16px; border-radius: 8px;
+    cursor: pointer; transition: all .20s ease; font-family: 'Space Grotesk', sans-serif;
+  }
+  .toggle-btn.active { background: var(--accent); color: #111114; }
+  .download-btn {
+    background: #15151a; border: 1px solid #26262e; color: #ededed;
+    font-size: 12px; font-weight: 700; padding: 8px 16px; border-radius: 10px;
+    cursor: pointer; transition: all .15s ease;
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .download-btn:hover { color: var(--accent); background: #1c1c22; }
+
+  /* ── Portfolio wrapper ─────────────────────────────── */
+  .dark-wrap {
+    position: relative; z-index: 2;
+    background-image:
+      radial-gradient(circle at 0% 0%, rgba(255,190,61,0.04) 0%, transparent 40%),
+      radial-gradient(circle at 100% 100%, rgba(92,225,230,0.03) 0%, transparent 40%);
+  }
+
+  /* ── Hero ───────────────────────────────────────────── */
+  .anky-hero { max-width: 1200px; margin: 0 auto; padding: 90px 24px 60px; }
+  .anky-hero-tag {
+    display: inline-block; font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1.5px; color: var(--accent);
+    background: rgba(255,190,61,.08); border: 1px solid rgba(255,190,61,.2);
+    padding: 4px 12px; border-radius: 6px; margin-bottom: 24px;
+  }
+  .anky-hero h1 {
+    font-size: 58px; font-weight: 800; line-height: 1.1;
+    letter-spacing: -1.5px; margin-bottom: 20px; color: var(--text);
+  }
+  /* "test code" — dim gray, no strikethrough line (per your request) */
+  h1 .strike, h2 .strike { color: var(--dim); text-decoration: none; }
+  h1 .accent, h2 .accent, h3 .accent { color: var(--accent); }
+  h1 .cyan { color: var(--cyan); }
+  h1 .purple { color: var(--purple); }
+  h1 .green { color: var(--green); }
+  .accent { color: var(--accent); }
+  .cyan { color: var(--cyan); }
+  .purple { color: var(--purple); }
+  .green { color: var(--green); }
+
+  .anky-hero-sub { font-size: 18px; color: var(--muted); max-width: 820px; line-height: 1.6; margin-bottom: 30px; }
+  .anky-hero-availability {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-family: 'JetBrains Mono', monospace; font-weight: 600;
+    color: var(--green); background: rgba(74,222,128,.06);
+    border: 1px solid rgba(74,222,128,.15); border-radius: 100px;
+    padding: 6px 14px; margin-bottom: 32px;
+  }
+  .anky-hero-availability .dot {
+    display: inline-block; width: 8px; height: 8px; border-radius: 100%;
+    background: var(--green); box-shadow: 0 0 10px var(--green);
+    animation: ping 1.6s ease-in-out infinite;
+  }
+  @keyframes ping { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.35)} }
+
+  .anky-hero-contact { display: flex; flex-wrap: wrap; gap: 16px 24px; margin-bottom: 40px; font-size: 14px; color: var(--muted); }
+  .anky-hero-contact a { color: var(--muted); transition: color .15s ease; }
+  .anky-hero-contact a:hover { color: var(--accent); }
+
+  .anky-hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 60px; }
+  .anky-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 13px 28px; font-size: 13px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .8px;
+    border-radius: 12px; cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif; transition: all .2s ease;
+    border: 1px solid transparent;
+  }
+  .anky-btn-primary { background: var(--accent); color: #0a0a0b; border-color: var(--accent); }
+  .anky-btn-primary:hover { background: transparent; color: var(--accent); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,190,61,.15); }
+  .anky-btn-ghost { background: #111114; color: var(--text); border-color: var(--border); }
+  .anky-btn-ghost:hover { background: #1c1c22; border-color: var(--accent); color: var(--accent); }
+
+  .anky-hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px; }
+  .anky-hstat { background: var(--bg-2); border: 1px solid var(--border); padding: 24px; border-radius: 16px; }
+  .anky-hstat .v { font-size: 32px; font-weight: 800; line-height: 1; margin-bottom: 6px; color: var(--text); }
+  .anky-hstat .l { font-size: 12px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: .5px; }
+
+  /* ── Section structure ──────────────────────────────── */
+  .anky-divider { border: none; border-top: 1px solid var(--border); max-width: 1200px; margin: 0 auto; }
+  .anky-section { max-width: 1200px; margin: 0 auto; padding: 100px 24px; }
+  .anky-section-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; }
+  .anky-section h2 { font-size: 40px; font-weight: 800; line-height: 1.2; letter-spacing: -1px; margin-bottom: 20px; color: var(--text); }
+  .anky-section-desc { font-size: 16px; color: var(--muted); max-width: 720px; line-height: 1.6; margin-bottom: 48px; }
+
+  /* ── Pitch cards ────────────────────────────────────── */
+  .anky-pitch-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .anky-pitch-card { background: var(--bg-2); border: 1px solid var(--border); padding: 32px; border-radius: 20px; transition: border-color .25s ease; }
+  .anky-pitch-card:hover { border-color: var(--border-2); }
+  .anky-pitch-card .num { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent); font-weight: 700; margin-bottom: 24px; }
+  .anky-pitch-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 14px; line-height: 1.3; color: var(--text); }
+  .anky-pitch-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* ── 2-col grid ─────────────────────────────────────── */
+  .anky-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: flex-start; }
+  .card-list { display: flex; flex-direction: column; gap: 16px; }
+  .anky-card { background: var(--bg-2); border: 1px solid var(--border); padding: 32px; border-radius: 20px; }
+
+  /* ── Career timeline ────────────────────────────────── */
+  .career-item { padding: 24px 0; border-bottom: 1px solid var(--border); }
+  .career-item:first-child { padding-top: 0; }
+  .career-item:last-child { padding-bottom: 0; border-bottom: none; }
+  .career-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
+  .career-company { font-weight: 700; font-size: 15px; color: var(--text); }
+  .career-dates { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+  .career-role { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 12px; }
+  .career-desc { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+
+  .subhead-mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 8px; }
+
+  /* ── Star grid ──────────────────────────────────────── */
+  .anky-star-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .anky-star-item { background: var(--bg-2); border: 1px solid var(--border); padding: 24px; border-radius: 16px; display: flex; gap: 16px; }
+  .anky-star-item .star { font-size: 20px; line-height: 1; }
+  .anky-star-item h4 { font-size: 17px; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+  .anky-star-item p { font-size: 13.5px; color: var(--muted); line-height: 1.55; }
+
+  /* ── Charts ─────────────────────────────────────────── */
+  .chart-panel-desc { font-size: 13px; color: var(--muted); margin-bottom: 24px; line-height: 1.5; }
+  .chart-container { position: relative; height: 220px; width: 100%; }
+
+  /* ── Impact rows ────────────────────────────────────── */
+  .anky-impact-row { display: grid; grid-template-columns: 240px 1fr 60px; align-items: center; gap: 16px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.04); font-size: 13px; }
+  .anky-impact-label { font-weight: 600; color: var(--text); }
+  .anky-impact-bar-wrap { background: rgba(255,255,255,.04); height: 8px; border-radius: 100px; overflow: hidden; }
+  .anky-impact-bar { height: 100%; border-radius: 100px; background: var(--accent); }
+  .anky-impact-bar.green { background: var(--green); }
+  .anky-impact-bar.cyan { background: var(--cyan); }
+  .anky-impact-bar.purple { background: var(--purple); }
+  .anky-impact-val { font-family: 'JetBrains Mono', monospace; font-weight: 700; text-align: right; color: var(--text); }
+
+  /* ── Featured project ──────────────────────────────── */
+  .feature-intro-mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--cyan); margin-bottom: 8px; }
+  .feature-title { font-size: 28px; font-weight: 800; letter-spacing: -.5px; margin-bottom: 20px; line-height: 1.3; color: var(--text); }
+  .feature-desc-large { font-size: 16px; color: var(--muted); line-height: 1.6; margin-bottom: 28px; }
+  .anky-features-list { list-style: none; margin-bottom: 30px; }
+  .anky-features-list li { position: relative; padding-left: 24px; font-size: 14px; color: var(--muted); margin-bottom: 12px; line-height: 1.55; }
+  .anky-features-list li::before { content: "✓"; color: var(--accent); position: absolute; left: 0; font-weight: 900; }
+  .anky-enterprise-line { display: flex; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 750; gap: 12px; color: var(--dim); margin-top: 24px; flex-wrap: wrap; }
+  .anky-enterprise-line .sep { color: var(--border); }
+
+  .anky-ai-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 24px; }
+  .anky-ai-col { background: var(--bg); border: 1px solid var(--border); padding: 24px; border-radius: 16px; }
+  .anky-ai-col-title { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; display: flex; align-items: center; gap: 6px; }
+  .anky-ai-list { list-style: none; }
+  .anky-ai-list li { position: relative; padding-left: 20px; font-size: 13.5px; color: var(--muted); margin-bottom: 12px; line-height: 1.5; }
+  .anky-ai-list li::before { content: "▪"; position: absolute; left: 0; color: var(--accent); }
+
+  /* ── Bug wall table ────────────────────────────────── */
+  .anky-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; }
+  .anky-table th, .anky-table td { padding: 16px; border-bottom: 1px solid var(--border); color: var(--text); }
+  .anky-table td { color: var(--muted); line-height: 1.5; }
+  .anky-table th { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .anky-table tbody tr:hover { background: rgba(255,255,255,.01); }
+  .anky-table code { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: rgba(255,190,61,.06); color: var(--accent); padding: 1px 6px; border-radius: 4px; }
+  .bug-badge { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; text-transform: uppercase; white-space: nowrap; }
+  .bug-badge.red { background: rgba(248,113,113,.12); color: var(--red); border: 1px solid rgba(248,113,113,.25); }
+  .bug-badge.purple { background: rgba(192,132,252,.12); color: var(--purple); border: 1px solid rgba(192,132,252,.25); }
+  .bug-badge.orange { background: rgba(255,138,61,.12); color: var(--accent-2); border: 1px solid rgba(255,138,61,.25); }
+
+  /* ── Final CTA / Contact ───────────────────────────── */
+  .anky-cta-final { max-width: 1200px; margin: 0 auto; padding: 100px 24px; text-align: center; }
+  .anky-cta-final h2 { font-size: 44px; font-weight: 800; margin-bottom: 16px; letter-spacing: -1px; color: var(--text); }
+  .anky-cta-final .cta-sub { max-width: 600px; margin: 0 auto 32px; font-size: 15px; color: var(--muted); font-family: 'JetBrains Mono', monospace; line-height: 1.6; }
+  .contact-form-card {
+    background: rgba(23,23,28,.85); border: 1px solid var(--border);
+    border-radius: 20px; padding: 40px; text-align: left;
+    max-width: 600px; margin: 40px auto 0;
+    box-shadow: 0 10px 40px rgba(0,0,0,.4); backdrop-filter: blur(8px);
+  }
+  .contact-form-card h3 { font-size: 18px; margin-bottom: 8px; color: #fff; font-weight: 700; }
+  .contact-form-card .form-intro { font-size: 12.5px; color: var(--muted); margin-bottom: 24px; line-height: 1.5; }
+  .contact-form-card label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; font-family: 'JetBrains Mono', monospace; }
+  .contact-form-card input, .contact-form-card textarea {
+    width: 100%; padding: 12px 16px; background: #111114;
+    border: 1px solid var(--border); border-radius: 10px; color: #fff;
+    font-size: 14px; outline: none; font-family: 'Space Grotesk', sans-serif; resize: none;
+  }
+  .contact-form-card input:focus, .contact-form-card textarea:focus { border-color: var(--accent); }
+  .contact-form-card .form-row { margin-bottom: 16px; }
+  .contact-form-card .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .contact-form-card .form-feedback {
+    margin-bottom: 16px; padding: 12px; border-radius: 10px;
+    font-size: 12.5px; font-weight: 600;
+    background: rgba(74,222,128,.12); border: 1px solid rgba(74,222,128,.3); color: var(--green);
+    display: none;
+  }
+  .contact-form-card .form-feedback.show { display: block; }
+  .contact-form-card .form-submit {
+    width: 100%; background: var(--accent); border: none; padding: 14px;
+    font-weight: 900; border-radius: 10px; color: #111114; cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif; text-transform: uppercase;
+    font-size: 12px; letter-spacing: 1px; transition: opacity .2s ease;
+  }
+  .contact-form-card .form-submit:hover { opacity: .85; }
+
+  /* ── Footer ───────────────────────────────────────── */
+  .anky-footer { border-top: 1px solid var(--border); padding: 40px 24px; text-align: center; font-size: 12px; color: var(--dim); max-width: 1200px; margin: 0 auto; }
+
+  /* ── Resume sheet (print-ready) ───────────────────── */
+  .resume-view { width: 100%; background: #fafafa; color: #1a1a1a; padding: 32px 0; font-family: 'Inter', system-ui, sans-serif; line-height: 1.55; display: flex; justify-content: center; }
+  .resume-sheet { background: #fff; max-width: 820px; width: 100%; padding: 38px 48px; box-shadow: 0 4px 24px rgba(0,0,0,.08); border-radius: 4px; color: #1a1a1a; }
+  .resume-name { font-size: 26pt; font-weight: 700; letter-spacing: -.4px; color: #1a1a1a; margin-bottom: 4px; }
+  .resume-title-line { font-size: 10.5pt; color: #b8801c; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: .5px; }
+  .resume-contact { font-size: 10pt; color: #333; margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 12px; }
+  .resume-contact a { color: #333; font-weight: 600; }
+  .resume-contact a:hover { text-decoration: underline; }
+  hr.resume-rule { border: none; border-top: 1.5px solid #b8801c; margin: 0 0 16px; }
+  .resume-section-title { font-size: 11.5pt; font-weight: 700; color: #b8801c; text-transform: uppercase; letter-spacing: 1.2px; margin-top: 16px; margin-bottom: 8px; border-bottom: 1px solid #d9d9d9; padding-bottom: 3px; }
+  .resume-sheet p { margin-bottom: 8px; color: #333; font-size: 10.2pt; }
+  .resume-skills { list-style: none; padding: 0; margin-bottom: 6px; }
+  .resume-skills li { font-size: 10pt; margin-bottom: 4px; color: #333; }
+  .resume-featured { background: #fbf6ec; border-left: 3px solid #b8801c; padding: 10px 14px; margin-bottom: 10px; border-radius: 0 3px 3px 0; }
+  .resume-featured .ftitle { font-weight: 700; color: #1a1a1a; font-size: 10.8pt; margin-bottom: 2px; }
+  .resume-featured .fmeta { font-size: 9.2pt; color: #555; margin-bottom: 8px; }
+  .resume-featured ul { margin-left: 18px; list-style-type: disc; }
+  .resume-featured li { margin-bottom: 4px; font-size: 10pt; color: #333; }
+  .resume-role { margin-bottom: 14px; }
+  .resume-role-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 2px; flex-wrap: wrap; }
+  .resume-company { font-weight: 700; color: #1a1a1a; font-size: 11pt; }
+  .resume-dates { font-size: 9.5pt; color: #555; white-space: nowrap; }
+  .resume-role-title { font-weight: 600; color: #b8801c; font-size: 10.3pt; margin-bottom: 5px; }
+  .resume-role ul { margin-left: 18px; list-style-type: disc; }
+  .resume-role li { margin-bottom: 3px; font-size: 10pt; color: #333; }
+  .resume-cert-list { list-style: none; padding: 0; }
+  .resume-cert-list li { font-size: 10.2pt; color: #333; margin-bottom: 4px; padding-left: 14px; position: relative; }
+  .resume-cert-list li::before { content: "▪"; position: absolute; left: 0; color: #b8801c; }
+  .resume-edu { font-size: 10.4pt; color: #1a1a1a; }
+
+  /* ── Responsive ────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .top-controller { flex-direction: column; gap: 12px; padding: 12px; }
+    .anky-hero h1 { font-size: 38px; letter-spacing: -1px; }
+    .anky-hero-stats { grid-template-columns: repeat(2, 1fr); }
+    .anky-pitch-grid, .anky-grid-2, .anky-star-grid { grid-template-columns: 1fr; }
+    .anky-ai-cols { grid-template-columns: 1fr; gap: 20px; }
+    .anky-impact-row { grid-template-columns: 1fr; gap: 8px; }
+    .anky-section { padding: 60px 24px; }
+    .anky-hero { padding: 60px 24px 40px; }
+    .anky-enterprise-line { flex-direction: column; gap: 8px; font-size: 13px; }
+    .anky-enterprise-line .sep { display: none; }
+    .anky-section h2 { font-size: 30px; }
+    .anky-cta-final h2 { font-size: 32px; }
+    .contact-form-card .form-grid-2 { grid-template-columns: 1fr; }
+    .resume-sheet { padding: 24px; }
+  }
+
+  /* ── Print (PDF mode) ───────────────────────────── */
+  @media print {
+    body { background: #fff !important; color: #1a1a1a !important; }
+    .top-controller, .dark-wrap { display: none !important; }
+    .resume-view { display: flex !important; background: #fff !important; padding: 0 !important; }
+    .resume-sheet { box-shadow: none !important; padding: 0 !important; max-width: 100% !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── System Controller Bar ─────────────────────────── -->
+<div class="top-controller">
+  <div class="alias-text">
+    <span>Primary:</span>
+    <a class="alias-link" href="https://www.ankyai.com">www.ankyai.com</a>
+  </div>
+  <div class="top-controller-right">
+    <div class="view-toggles">
+      <button id="toggle-portfolio" class="toggle-btn active">💫 Portfolio</button>
+      <button id="toggle-resume" class="toggle-btn">📄 Resume</button>
+    </div>
+    <button class="download-btn" onclick="window.print()">🖨 Print / PDF</button>
+  </div>
+</div>
+
+<!-- ── PORTFOLIO VIEW ────────────────────────────────── -->
+<div id="portfolio-view" class="dark-wrap">
+
+  <section class="anky-hero">
+    <div class="anky-hero-tag">Quality Engineering Manager · Portfolio 2026</div>
+    <h1>
+      I don't just <span class="strike">test code</span>.<br />
+      I direct <span class="accent">quality.</span>
+    </h1>
+    <p class="anky-hero-sub">
+      <strong>Quality Engineering Manager &amp; Test Architect</strong> — 11+ years driving release
+      governance, people management, and shift-left automation across <strong>30+ enterprise apps</strong>.
+      Most recently: <strong>directed Claude AI through a 1,444-test, 99.8%-pass production build</strong>
+      under a 512 MB pod RAM ceiling.
+    </p>
+
+    <div class="anky-hero-availability"><span class="dot"></span> Quality Engineering Manager</div>
+
+    <div class="anky-hero-contact">
+      <span>📍 Mumbai · Open to Relocation</span>
+      <a href="tel:+919406668896">📞 +91-9406668896</a>
+      <a href="/cdn-cgi/l/email-protection#62030c090b16164c0f030e140b1b0322050f030b0e4c010d0f5d111700080701165f31011007070c0b0c054750522b0c160710140b0715">✉ <span class="__cf_email__" data-cfemail="d0b1bebbb9a4a4febdb1bca6b9a9b190b7bdb1b9bcfeb3bfbd">[email&#160;protected]</span></a>
+      <a href="https://linkedin.com/in/anky/" target="_blank" rel="noopener">🔗 linkedin.com/in/anky</a>
+    </div>
+
+    <div class="anky-hero-cta">
+      <a class="anky-btn anky-btn-primary" href="/cdn-cgi/l/email-protection#abcac5c0c2dfdf85c6cac7ddc2d2caebccc6cac2c785c8c4c694d8dec9c1cec8df96f9cedadeced8df8e999be2c6c6cecfc2cadfce8e999bf8c8d9cecec5c2c5cc8e999be2c5dfced9ddc2cedc">
+        📧 Request Immediate Screening →
+      </a>
+      <button type="button" class="anky-btn anky-btn-ghost" onclick="window.print()">⬇ View / Print Resume (PDF)</button>
+      <a class="anky-btn anky-btn-ghost" href="#project">See the Featured Build</a>
+    </div>
+
+    <div class="anky-hero-stats">
+      <div class="anky-hstat"><div class="v accent">11+</div><div class="l">Years Experience</div></div>
+      <div class="anky-hstat"><div class="v">30+</div><div class="l">Enterprise Apps Owned</div></div>
+      <div class="anky-hstat"><div class="v cyan">1,444</div><div class="l">Tests · Latest Build</div></div>
+      <div class="anky-hstat"><div class="v accent">99.8%</div><div class="l">Pass Rate</div></div>
+      <div class="anky-hstat"><div class="v purple">0.9:1</div><div class="l">Test:Prod LOC Ratio</div></div>
+      <div class="anky-hstat"><div class="v green">−42%</div><div class="l">p95 Latency Recovered</div></div>
+      <div class="anky-hstat"><div class="v">9</div><div class="l">Engineers Managed</div></div>
+      <div class="anky-hstat"><div class="v accent">−40%</div><div class="l">Manual Effort Cut</div></div>
+    </div>
+  </section>
+
+  <hr class="anky-divider" />
+
+  <!-- 01 — Why Hire Me -->
+  <section class="anky-section">
+    <div class="anky-section-label">01 — Why Hire Me</div>
+    <h2>Three things you don't get<br/>from a typical <span class="accent">QA hire.</span></h2>
+    <p class="anky-section-desc">
+      Most QA leads stop at sign-off. I own outcomes — from product evidence to root cause to regression
+      lock — across teams of 9 engineers and codebases of 45k+ lines.
+    </p>
+    <div class="anky-pitch-grid">
+      <div class="anky-pitch-card">
+        <div class="num">01 / Pioneer</div>
+        <h3>Human–AI Collaboration as a QA discipline.</h3>
+        <p>I directed Claude AI as a coding agent through a full 12-week production build of a live-money trading platform. Acceptance criteria as precision prompts. Rejected non-compliant AI code on standard. Owned every release gate. This is <strong style="color:var(--accent)">Agentic QA Leadership</strong> — not a buzzword on a slide.</p>
+      </div>
+      <div class="anky-pitch-card">
+        <div class="num">02 / Operator</div>
+        <h3>Bugs caught from live evidence, not test runs.</h3>
+        <p>7 P0/P1 production bugs spotted from <strong style="color:var(--text)">operator observation</strong>, Ops-Dashboard p95 spikes, and PROD↔PREVIEW parity drills. Each one root-caused 3 layers below the symptom and locked with a regression test before the fix shipped. No patch-only fixes accepted.</p>
+      </div>
+      <div class="anky-pitch-card">
+        <div class="num">03 / Leader</div>
+        <h3>Teams, KPIs &amp; sign-off across 30+ apps.</h3>
+        <p>At Cornerstone OnDemand: managed <strong style="color:var(--text)">9 QA engineers</strong>, delivered 2 promotions, owned release sign-off across 30+ enterprise mobile apps with 95–98% on-time delivery, cut manual testing effort by 40% via AI-assisted planning.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="anky-divider" />
+
+  <!-- 02 — Career Timeline -->
+  <section class="anky-section">
+    <div class="anky-section-label">02 — Career Timeline</div>
+    <div class="anky-grid-2">
+      <div>
+        <h2>A track record of<br/>increasing <span class="accent">ownership.</span></h2>
+        <p class="anky-section-desc">From executing pure mobile automation scripts to architecting enterprise release criteria and managing cross-functional SDET teams.</p>
+        <div class="anky-card" style="margin-top:48px">
+          <div class="subhead-mono">Key Directives Delivered</div>
+          <div style="padding:6px 0">
+            <div class="anky-impact-row"><span class="anky-impact-label">Manual testing effort reduced</span><div class="anky-impact-bar-wrap"><div class="anky-impact-bar green" style="width:40%"></div></div><span class="anky-impact-val">−40%</span></div>
+            <div class="anky-impact-row"><span class="anky-impact-label">On-time release delivery</span><div class="anky-impact-bar-wrap"><div class="anky-impact-bar" style="width:97%"></div></div><span class="anky-impact-val">95–98%</span></div>
+            <div class="anky-impact-row"><span class="anky-impact-label">Production defects reduced</span><div class="anky-impact-bar-wrap"><div class="anky-impact-bar green" style="width:15%"></div></div><span class="anky-impact-val">−15%</span></div>
+            <div class="anky-impact-row"><span class="anky-impact-label">Team productivity improved</span><div class="anky-impact-bar-wrap"><div class="anky-impact-bar purple" style="width:30%"></div></div><span class="anky-impact-val">+25–35%</span></div>
+            <div class="anky-impact-row"><span class="anky-impact-label">Test coverage uplift (SDET era)</span><div class="anky-impact-bar-wrap"><div class="anky-impact-bar cyan" style="width:20%"></div></div><span class="anky-impact-val">+20%</span></div>
+            <div class="anky-impact-row"><span class="anky-impact-label">Regression cycle time cut</span><div class="anky-impact-bar-wrap"><div class="anky-impact-bar green" style="width:25%"></div></div><span class="anky-impact-val">−25%</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-list">
+        <div class="anky-card">
+          <div class="career-item">
+            <div class="career-head"><span class="career-company">My-FastTrade-AI — Independent Project</span><span class="career-dates">2025 – 2026</span></div>
+            <div class="career-role">QA Manager &amp; Product Owner</div>
+            <p class="career-desc">Directed AI tools through production builds. Set quality parameters for real-time order placement flows, high-availability caching, and automated regression locks.</p>
+          </div>
+          <div class="career-item">
+            <div class="career-head"><span class="career-company">Cornerstone OnDemand — India</span><span class="career-dates">2024 – 2025</span></div>
+            <div class="career-role">Principal Quality Assurance Engineer</div>
+            <p class="career-desc">Directed release governance and gated deployments across 30+ enterprise applications. Mentored a dedicated division of 9 local engineers, delivered 2 performance promotions.</p>
+          </div>
+          <div class="career-item">
+            <div class="career-head"><span class="career-company">Cornerstone OnDemand</span><span class="career-dates">2022 – 2024</span></div>
+            <div class="career-role">Lead QA Specialist &amp; QA Lead</div>
+            <p class="career-desc">Drove 95–98% on-time releases. Shifted test execution into pipeline filters, decreasing standard manual evaluation timelines by 40% and increasing sprint throughput by 35%.</p>
+          </div>
+          <div class="career-item">
+            <div class="career-head"><span class="career-company">Cornerstone OnDemand</span><span class="career-dates">2016 – 2022</span></div>
+            <div class="career-role">Software Development Engineer in Test (SDET)</div>
+            <p class="career-desc">Pioneered custom mobile test matrices inside Jenkins using Espresso and XCUITest, locking regression validation intervals at every codebase commit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="anky-divider" />
+
+  <!-- 03 — Leadership Playbook -->
+  <section class="anky-section">
+    <div class="anky-section-label">03 — Leadership Playbook</div>
+    <h2>Strategic quality metrics that<br/>drive <span class="accent">engineering speed.</span></h2>
+    <p class="anky-section-desc">Testing is not about finding bugs. It is about reducing the risk of software releases while maximizing developer velocity.</p>
+    <div class="anky-star-grid">
+      <div class="anky-star-item"><span class="star">⚖️</span><div><h4>Strict Release Gates</h4><p>Every release is gated by strict, automated regression builds. Zero flaky tests allowed in the gate. This enforces codebase discipline and ensures predictable production behaviour.</p></div></div>
+      <div class="anky-star-item"><span class="star">🎯</span><div><h4>Regression Locking</h4><p>Any production bug must be reproduced with a dedicated automated test before a patch is shipped. This locks the regression in the build pipeline forever.</p></div></div>
+      <div class="anky-star-item"><span class="star">🤝</span><div><h4>AI Quality Governance</h4><p>Instructing and reviewing AI-generated code requests with the same professional rigor as standard human code blocks. If the code violates RAM ceilings, reject.</p></div></div>
+      <div class="anky-star-item"><span class="star">📈</span><div><h4>Observability-First QA</h4><p>Monitoring p95 latencies and error spikes in real-time dashboards to spot production errors before they affect user flow. Parity testing matches PROD to PREVIEW.</p></div></div>
+    </div>
+  </section>
+
+  <hr class="anky-divider" />
+
+  <!-- 04 — Featured Project -->
+  <section id="project" class="anky-section">
+    <div class="anky-section-label">04 — Featured Project Build</div>
+    <div class="anky-grid-2">
+      <div>
+        <div class="feature-intro-mono">Human–AI Collaboration Case Study</div>
+        <h3 class="feature-title">Options Trading Bot:<br/>Full 12-Week Build Archive</h3>
+        <p class="feature-desc-large">I acted as the QA Manager and Product Owner, directing Claude AI as my developer to build a real-time options trading execution platform on Kubernetes.</p>
+        <ul class="anky-features-list">
+          <li><strong>The Stack:</strong> FastAPI, React, Tailwind CSS, MongoDB, Chart.js.</li>
+          <li><strong>Under Constraints:</strong> Strict 512 MB Pod memory ceiling.</li>
+          <li><strong>Test Rigour:</strong> 1,444 automated test scripts (99.8% pass rate).</li>
+          <li><strong>Coverage:</strong> 0.9 : 1 Test to Product Line-of-Code ratio.</li>
+        </ul>
+        <div class="anky-enterprise-line">
+          <span>ROLE: QA Manager</span><span class="sep">|</span>
+          <span>DEVELOPER: Claude AI</span><span class="sep">|</span>
+          <span>STATUS: PROD Live</span>
+        </div>
+      </div>
+      <div class="card-list">
+        <div class="anky-card">
+          <h3 style="font-size:18px;margin-bottom:20px;color:var(--accent)">The QA / PO Division of Labor</h3>
+          <div class="anky-ai-cols">
+            <div class="anky-ai-col">
+              <div class="anky-ai-col-title" style="color:var(--accent)">My Role (QA / PO)</div>
+              <ul class="anky-ai-list">
+                <li>Formulated precise acceptance criteria</li>
+                <li>Configured memory ceilings (512MB)</li>
+                <li>Conducted parity checks</li>
+                <li>Designed test matrices</li>
+              </ul>
+            </div>
+            <div class="anky-ai-col">
+              <div class="anky-ai-col-title" style="color:var(--cyan)">Claude AI's Role (SDET)</div>
+              <ul class="anky-ai-list">
+                <li>Generated code blocks on demand</li>
+                <li>Refactored order routers</li>
+                <li>Wrote 1,444 test files</li>
+                <li>Optimized cache systems</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="anky-divider" />
+
+  <!-- 05 — Bug Wall -->
+  <section class="anky-section">
+    <div class="anky-section-label">05 — Production Forensic Bug Wall</div>
+    <h2>Zero-compromise bug tracing<br/>and <span class="accent">deep root-causing.</span></h2>
+    <p class="anky-section-desc">I refuse patch-only fixes. Every production bug is investigated to its absolute root cause and wrapped in an automated regression lock before returning to live release queues.</p>
+    <div class="anky-card" style="padding:0;overflow-x:auto">
+      <table class="anky-table">
+        <thead><tr><th>Bug Type</th><th>Description</th><th>Investigation &amp; Forensic Root Cause</th><th>Regression Lock Test</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="bug-badge red">Memory Leak</span></td>
+            <td><strong>351MB Idle RSS spike</strong> on Pod startup. Near 512MB threshold.</td>
+            <td>Vite middleware hot-module socket listening threads were kept open on production boot. Traced to <code>server.ts</code> mounting Dev sockets on PROD flag.</td>
+            <td>Docker health check loading test with 50 concurrency loops, asserts memory remains under 260MB.</td>
+          </tr>
+          <tr>
+            <td><span class="bug-badge purple">UI / Manual</span></td>
+            <td><strong>Disrupted tags</strong> on the live candidate listings under Mobile sizes.</td>
+            <td>Tailwind class names conflicting inside custom style imports in <code>LivePortfolio.tsx</code>. Text width wrap was clobbering tags.</td>
+            <td>Playwright web snapshot layout checks verifying layout proportions down to 360px viewport grid.</td>
+          </tr>
+          <tr>
+            <td><span class="bug-badge orange">Logic Gate</span></td>
+            <td><strong>Order status clobbered</strong> under high concurrency placement.</td>
+            <td>FastAPI chunked-order correlationId was overwritten because of a shared async context dictionary clobber in <code>routes/orders.py</code>. Code was human-written; AI was directed to repair it.</td>
+            <td>pytest-asyncio concurrent pool trigger, dispatching 100 simultaneous order mock posts, asserting unique trace headers on every trade ticket.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="anky-divider" />
+
+  <!-- 06 — Charts -->
+  <section class="anky-section">
+    <div class="anky-section-label">06 — Real Quality Metrics</div>
+    <h2>Visualizing the metrics of<br/>high-availability <span class="accent">systems.</span></h2>
+    <p class="anky-section-desc">Performance is a QA metric. From load capacities to build velocity and system RAM overhead under stress tests.</p>
+
+    <div class="anky-pitch-grid">
+      <div class="anky-card" style="padding:24px"><div class="subhead-mono">Test Pyramid Ratio</div><p class="chart-panel-desc">Ideal test proportions ensuring cost-efficient and high-speed pipeline gates.</p><div class="chart-container"><canvas id="chart-pyramid"></canvas></div></div>
+      <div class="anky-card" style="padding:24px"><div class="subhead-mono">Test Base Growth Velocity</div><p class="chart-panel-desc">Staggered automated test scaling matching product release cycles.</p><div class="chart-container"><canvas id="chart-growth"></canvas></div></div>
+      <div class="anky-card" style="padding:24px"><div class="subhead-mono">Commit Velocity Profile</div><p class="chart-panel-desc">Monthly release and code delivery frequencies across cycles.</p><div class="chart-container"><canvas id="chart-commit"></canvas></div></div>
+    </div>
+    <div class="anky-pitch-grid" style="margin-top:24px">
+      <div class="anky-card" style="padding:24px"><div class="subhead-mono">Memory Profiling Optimization</div><p class="chart-panel-desc">Pod RAM (MB) optimization before and after solving the middleware leak (vs 512MB limit).</p><div class="chart-container"><canvas id="chart-mem"></canvas></div></div>
+      <div class="anky-card" style="padding:24px"><div class="subhead-mono">p95 API Response Latency (ms)</div><p class="chart-panel-desc">Network response intervals reduced through high-performance caching checks.</p><div class="chart-container"><canvas id="chart-latency"></canvas></div></div>
+      <div class="anky-card" style="padding:24px;display:flex;flex-direction:column;justify-content:center"><h3 class="accent" style="font-size:20px;margin-bottom:8px;color:var(--accent)">1,444 Test Scripts pass green</h3><p style="font-size:13px;color:var(--muted);line-height:1.6">A state-of-the-art options execution algorithm locked with strict correlation tracing. This is live assurance.</p></div>
+    </div>
+  </section>
+
+  <hr class="anky-divider" />
+
+  <!-- 07 — Principles -->
+  <section class="anky-section">
+    <div class="anky-section-label">07 — Core Principles &amp; Playbooks</div>
+    <h2>How I manage QA teams for<br/><span class="accent">zero-regression delivery.</span></h2>
+    <p class="anky-section-desc">Standard testing is passive. I implement proactive quality programs that embed SDETs into active development cycles.</p>
+    <div class="anky-pitch-grid">
+      <div class="anky-pitch-card"><div class="num">I / Shift-Left Execution</div><h3>Early Defect Discovery</h3><p>We integrate QA engineers directly into Figma drafts and API definitions. Finding conflicts before the first line of code is produced decreases fixing costs tenfold.</p></div>
+      <div class="anky-pitch-card"><div class="num">II / Forensics First</div><h3>Parity Inspections</h3><p>We configure staging environments with real, sanitised product snapshot feeds. True assurance requires matching production-scale telemetry streams down to correlation IDs.</p></div>
+      <div class="anky-pitch-card"><div class="num">III / Developer Velocity</div><h3>Pipeline Speed Controls</h3><p>If automated test runs take over 10 minutes, developers bypass them. I optimize grids, distribute tests in chunks, and implement dynamic cache targets to preserve speed.</p></div>
+    </div>
+  </section>
+
+  <hr class="anky-divider" />
+
+  <!-- 08 — Contact -->
+  <section class="anky-cta-final">
+    <div class="anky-section-label">08 — Talk Directly</div>
+    <h2>Let's build reliable software systems</h2>
+    <p class="cta-sub">Ankit Malviya — Quality Engineering Manager &amp; Test Architect<br/>📍 Mumbai, Maharashtra · Open to Relocation</p>
+    <div class="anky-hero-cta" style="justify-content:center">
+      <a class="anky-btn anky-btn-primary" href="/cdn-cgi/l/email-protection#3657585d5f4242185b575a405f4f5776515b575f5a1855595b094543545c5355420b6555445353585f58511304067f58425344405f5341">📧 Fast Email</a>
+      <a class="anky-btn anky-btn-ghost" href="tel:+919406668896">📞 Phone Call</a>
+      <a class="anky-btn anky-btn-ghost" href="https://linkedin.com/in/anky/" target="_blank" rel="noopener">🔗 LinkedIn</a>
+    </div>
+
+    <!-- Mailto-based form. Opens recruiter's email client with pre-filled subject + body. -->
+    <div class="contact-form-card">
+      <h3>✉️ Direct Quality Engineering Message</h3>
+      <p class="form-intro">Fill the form. Tap submit. Your email app opens with the message ready — just hit send. Lands directly in <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="13727d787a67673d7e727f657a6a7253747e727a7f3d707c7e">[email&#160;protected]</a></strong>. No third-party services.</p>
+      <form id="contact-form" autocomplete="on">
+        <div class="form-row">
+          <label>Your Name *</label>
+          <input type="text" id="cf-name" required placeholder="e.g., Jennifer Reed" />
+        </div>
+        <div class="form-grid-2">
+          <div>
+            <label>Your Email *</label>
+            <input type="email" id="cf-email" required placeholder="recruiter@company.com" />
+          </div>
+          <div>
+            <label>Role Subject</label>
+            <input type="text" id="cf-subject" placeholder="QE Manager Opportunity" />
+          </div>
+        </div>
+        <div class="form-row">
+          <label>Secure Message Details *</label>
+          <textarea id="cf-message" required rows="4" placeholder="Describe the screening options or timeline details..."></textarea>
+        </div>
+        <div id="form-feedback" class="form-feedback"></div>
+        <button type="submit" class="form-submit">📨 Open my email app &amp; send</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="anky-footer">
+    © <span id="yr"></span> Ankit Malviya · Quality Engineering Manager · Built in code, no template
+  </footer>
+</div>
+
+<!-- ── RESUME VIEW ──────────────────────────────────── -->
+<div id="resume-view" class="resume-view" style="display:none">
+  <div class="resume-sheet">
+    <h1 class="resume-name">Ankit Malviya</h1>
+    <div class="resume-title-line">Quality Engineering Manager · QA Strategy · AI Quality Governance · Release Leadership</div>
+    <div class="resume-contact">
+      <span>📍 Mumbai, Maharashtra · Open to Relocation</span>
+      <span>📞 <a href="tel:+919406668896">+91-9406668896</a></span>
+      <span>✉ <a href="/cdn-cgi/l/email-protection#7617181d1f0202581b171a001f0f1736111b171f1a5815191b"><span class="__cf_email__" data-cfemail="cfaea1a4a6bbbbe1a2aea3b9a6b6ae8fa8a2aea6a3e1aca0a2">[email&#160;protected]</span></a></span>
+      <span>🔗 <a href="https://linkedin.com/in/anky/">linkedin.com/in/anky</a></span>
+      <span>🌐 <a href="https://www.ankyai.com" style="color:#b8801c;font-weight:700">www.ankyai.com</a></span>
+    </div>
+    <hr class="resume-rule" />
+
+    <div class="resume-section-title">Professional Summary</div>
+    <p>Quality Engineering Manager and Test Architect with <strong>11+ years</strong> driving QA strategy, release governance, and people management across enterprise-scale Agile/DevOps environments. Achieved <strong>99.8% test pass rate</strong> and <strong>95–98% on-time release delivery</strong> across <strong>30+ applications</strong> by combining shift-left practices, CI/CD integration, and AI-assisted test planning. Most recently directed Claude AI through a 1,444-test, 99.8%-pass live-money trading-platform build under a 512MB RAM ceiling — validating AI-generated code and owning every quality gate. Proven people leader: built and mentored high-performing QA teams, delivered <strong>2 promotions</strong>, reduced manual testing effort by <strong>40%</strong>, and improved team productivity by <strong>25–35%</strong>. Expertise spans mobile automation (Espresso, XCUITest, Appium), API/regression testing, performance testing, AI/ML output validation, and data-pipeline quality.</p>
+
+    <div class="resume-section-title">Key Skills &amp; Technologies</div>
+    <ul class="resume-skills">
+      <li><strong>QA Leadership:</strong> QA Strategy, Test Architecture, Release Governance, Risk-Based Testing, Shift-Left, Defect Management, Quality KPIs</li>
+      <li><strong>AI &amp; Emerging Tech:</strong> Human–AI Collaboration, Agentic QA, AI Model Output Validation, AI-Assisted Test Planning, ML System QA, Data Pipeline Testing</li>
+      <li><strong>Automation &amp; Tools:</strong> Selenium, Appium, Espresso, XCUITest, Postman, BrowserStack, Jenkins, GitHub Actions, TestRail, Jira, Confluence, pytest, Playwright</li>
+      <li><strong>Methodologies:</strong> Agile, Scrum, DevOps QA, CI/CD, Continuous Testing, Performance Testing, Regression Optimisation, Root Cause Analysis</li>
+      <li><strong>People &amp; Delivery:</strong> Team Building, Mentoring, Performance Reviews, Hiring &amp; Interviewing, Contractor Management, Stakeholder Alignment</li>
+    </ul>
+
+    <div class="resume-section-title">Human–AI Collaboration — Featured Project</div>
+    <div class="resume-featured">
+      <div class="ftitle">Live-money Indian Options Trading Bot (FastAPI + React + MongoDB on Kubernetes)</div>
+      <div class="fmeta"><strong>Role:</strong> QA Manager + Product Owner · <strong>AI Agent:</strong> Claude AI · <strong>Status:</strong> Completed · <strong>Showcase:</strong> <a href="https://www.ankyai.com" style="color:#b8801c;font-weight:700">www.ankyai.com</a></div>
+      <ul>
+        <li>Directed Claude AI as the engineering executor — authored acceptance criteria, NFRs, and defect briefs as precision prompts; reviewed, challenged, and rejected AI-generated code that violated quality standards. <strong>Agentic QA Leadership:</strong> applying professional QA rigour to AI-generated codebases.</li>
+        <li>Drove <strong>~1,444 backend tests</strong> to a <strong>99.8% pass rate</strong> under a strict <strong>512 MB pod RAM ceiling</strong> — auditing AI test coverage strategy and enforcing lock-test discipline on every defect fix.</li>
+        <li>Identified a <strong>PROD memory regression (351 MB idle)</strong> and a critical <strong>MANUAL mis-tag bug</strong> from production evidence; traced root cause 3 layers below the symptom (chunked-order correlationId clobber in <em>routes/orders.py</em>); refused patch-only fixes and directed end-to-end remediation.</li>
+        <li>Established <strong>PROD ↔ PREVIEW forensic parity</strong>, correlationId audit trail, and sentinel-decisions logging — every blocked or executed trade traceable end-to-end.</li>
+        <li>Enforced a <strong>"Simple-Thief" architecture mandate</strong> — rejected over-engineered institutional gates, reducing defect surface area and prioritising observability over abstraction.</li>
+      </ul>
+    </div>
+
+    <div class="resume-section-title">Work Experience</div>
+    <div class="resume-role"><div class="resume-role-head"><div class="resume-company">My-FastTrade-AI — Independent Project · Mumbai</div><div class="resume-dates">Nov 2025 – May 2026 · Completed</div></div><div class="resume-role-title">QA Manager &amp; Product Owner — AI Quality &amp; Test Architecture</div><ul><li>Owned end-to-end QA strategy and product direction for a live-money Indian options trading platform built with FastAPI + React + MongoDB on Kubernetes.</li><li>Validated AI model outputs and trading signal predictions — verified accuracy, consistency, and edge-case behaviour of ML-generated buy/sell recommendations.</li><li>Tested real-time data feeds and pipelines — ensured integrity, completeness, and correctness of market data flowing into the AI decision engine.</li><li>Executed functional, regression, performance, and load test suites across order placement, signal generation, portfolio tracking, and alert workflows.</li></ul></div>
+    <div class="resume-role"><div class="resume-role-head"><div class="resume-company">Cornerstone OnDemand — India</div><div class="resume-dates">Mar 2024 – Nov 2025</div></div><div class="resume-role-title">Principal Quality Assurance Engineer</div><ul><li>Owned QA release sign-off across 30+ enterprise mobile applications — defect-managed delivery with full stakeholder confidence before every PROD deployment.</li><li>Reduced production defects and release-day issues by 15% by enforcing release governance frameworks and refined CI/CD validation flows.</li><li>Managed 9 QA engineers across 2 product teams — 1-on-1s, performance reviews, talent development, and 2 promotions delivered.</li><li>Cut manual testing effort by 40% via AI-assisted test planning; accelerated sprint planning by 30% through analytics-powered Jira automation.</li><li>Maintained quality KPI dashboards to surface risks early and align Engineering, Product, and Design on release readiness.</li></ul></div>
+    <div class="resume-role"><div class="resume-role-head"><div class="resume-company">Cornerstone OnDemand — India</div><div class="resume-dates">Mar 2023 – Mar 2024</div></div><div class="resume-role-title">Lead QA Specialist</div><ul><li>Delivered 95–98% on-time releases through data-driven dashboards tracking defect trends, test coverage, and release health.</li><li>Improved team productivity by 25–35% via structured mentoring, individual development plans, and workflow optimisation.</li><li>Reduced release-day defects by 15% through refined defect governance and CI/CD integration.</li></ul></div>
+    <div class="resume-role"><div class="resume-role-head"><div class="resume-company">Cornerstone OnDemand — India</div><div class="resume-dates">May 2022 – Feb 2023</div></div><div class="resume-role-title">Quality Assurance Lead</div><ul><li>Achieved 95%+ sprint timeline alignment; improved early defect detection by 30% through shift-left testing practices.</li><li>Reduced regression cycle time by 25% via targeted mobile automation enhancements.</li></ul></div>
+    <div class="resume-role"><div class="resume-role-head"><div class="resume-company">Cornerstone OnDemand — India</div><div class="resume-dates">Jun 2016 – Apr 2022</div></div><div class="resume-role-title">Software Development Engineer in Test (SDET)</div><ul><li>Built mobile automation frameworks in Espresso (Android) and XCUITest (iOS) — improved functional test coverage by 20%.</li><li>Integrated functional, regression, and performance tests into Jenkins and GitHub Actions CI/CD pipelines — reduced deployment delays by 20%.</li><li>Reduced critical production defects by 15% across consecutive releases through structured defect insights and quality metrics.</li></ul></div>
+    <div class="resume-role"><div class="resume-role-head"><div class="resume-company">WAG Mobile Inc (WAGmob) — India</div><div class="resume-dates">Dec 2014 – May 2016</div></div><div class="resume-role-title">Software Quality Engineer</div><ul><li>Led end-to-end testing for 10+ Android and iOS apps across 3+ major launches; expanded test coverage by 25–30% through edge-case scenario mapping.</li><li>Streamlined test execution workflows, reducing repetitive manual effort by 20%.</li></ul></div>
+
+    <div class="resume-section-title">Certifications &amp; Training</div>
+    <ul class="resume-cert-list">
+      <li><strong>AI-Based Test Planning &amp; Optimisation</strong> — Cornerstone OnDemand Internal AI Upskilling Program (2024)</li>
+      <li><strong>Hands-on Training: Writing Test Cases Using AI</strong> — Cornerstone OnDemand (2024)</li>
+      <li><strong>Test Strategy &amp; Quality Engineering Leadership</strong> — Internal Training (2023)</li>
+    </ul>
+
+    <div class="resume-section-title">Education</div>
+    <div class="resume-edu"><strong>Bachelor of Engineering — Computer Science</strong> · RGPV Bhopal <span style="color:#555">· 2007 – 2011</span></div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // ── View toggle ──
+  const btnP = document.getElementById('toggle-portfolio');
+  const btnR = document.getElementById('toggle-resume');
+  const viewP = document.getElementById('portfolio-view');
+  const viewR = document.getElementById('resume-view');
+  function show(which){
+    if(which==='resume'){ viewP.style.display='none'; viewR.style.display='flex'; btnR.classList.add('active'); btnP.classList.remove('active'); window.scrollTo(0,0); }
+    else { viewR.style.display='none'; viewP.style.display='block'; btnP.classList.add('active'); btnR.classList.remove('active'); window.scrollTo(0,0); }
+  }
+  btnP.addEventListener('click', ()=>show('portfolio'));
+  btnR.addEventListener('click', ()=>show('resume'));
+
+  // ── Contact form → mailto: (no backend) ──
+  document.getElementById('contact-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name    = document.getElementById('cf-name').value.trim();
+    const email   = document.getElementById('cf-email').value.trim();
+    const subject = document.getElementById('cf-subject').value.trim() || 'Portfolio Inquiry';
+    const message = document.getElementById('cf-message').value.trim();
+
+    const body =
+      'From: ' + name + ' <' + email + '>\n' +
+      'Subject: ' + subject + '\n\n' +
+      '--- Message ---\n' + message + '\n--- End ---\n\n' +
+      '(Sent via www.ankyai.com contact form)';
+
+    const mailto = 'mailto:ankitt.malviya@gmail.com'
+      + '?subject=' + encodeURIComponent('[Portfolio] ' + name + ' — ' + subject)
+      + '&body=' + encodeURIComponent(body);
+
+    const fb = document.getElementById('form-feedback');
+    fb.textContent = '📨 Opening your email app... Just hit Send and the message goes directly to ankitt.malviya@gmail.com';
+    fb.classList.add('show');
+    window.location.href = mailto;
+  });
+
+  // ── Charts (when Chart.js loads) ──
+  window.addEventListener('load', function(){
+    if(typeof Chart === 'undefined') return;
+    Chart.defaults.color = '#8a8a96';
+    Chart.defaults.font.family = "'JetBrains Mono', monospace";
+    Chart.defaults.font.size = 11;
+    const GRID = { color: 'rgba(255,255,255,0.04)', drawBorder: false };
+
+    new Chart(document.getElementById('chart-pyramid'), {
+      type: 'bar',
+      data: { labels: ['Unit (Pure Logic)', 'Integration (Mongo+API)', 'Contract / Frontend', 'E2E (Playwright)'],
+              datasets: [{ data: [820, 410, 194, 20], backgroundColor: ['#ffbe3d','#5ce1e6','#c084fc','#4ade80'], borderRadius: 6 }] },
+      options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+                 plugins: { legend: { display: false } },
+                 scales: { x: { grid: GRID }, y: { grid: { display: false } } } }
+    });
+
+    new Chart(document.getElementById('chart-growth'), {
+      type: 'line',
+      data: { labels: ['Wk 1','Wk 3','Wk 5','Wk 7','Wk 9','Wk 11','Wk 12'],
+              datasets: [{ data: [85,240,510,820,1100,1320,1444], borderColor: '#ffbe3d', backgroundColor: 'rgba(255,190,61,0.12)', borderWidth: 2, tension: 0.35, fill: true, pointBackgroundColor: '#ffbe3d', pointRadius: 4 }] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: GRID }, y: { grid: GRID } } }
+    });
+
+    new Chart(document.getElementById('chart-commit'), {
+      type: 'bar',
+      data: { labels: ['Nov','Dec','Jan','Feb','Mar','Apr','May'], datasets: [{ data: [142,198,215,187,168,195,143], backgroundColor: '#5ce1e6', borderRadius: 6 }] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { display: false } }, y: { grid: GRID } } }
+    });
+
+    new Chart(document.getElementById('chart-mem'), {
+      type: 'bar',
+      data: { labels: ['Idle RSS','Peak RSS','Pod Ceiling'],
+              datasets: [
+                { label: 'Before', data: [351,384,0], backgroundColor: '#f87171', borderRadius: 6 },
+                { label: 'After',  data: [298,356,0], backgroundColor: '#4ade80', borderRadius: 6 },
+                { label: 'Limit',  data: [0,0,512],   backgroundColor: '#34343f', borderRadius: 6 } ] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top', labels: { color: '#ededed' } } }, scales: { x: { grid: { display: false } }, y: { grid: GRID, title: { display: true, text: 'MB', color: '#8a8a96' } } } }
+    });
+
+    new Chart(document.getElementById('chart-latency'), {
+      type: 'bar',
+      data: { labels: ['p50','p95','p99'],
+              datasets: [
+                { label: 'Before', data: [462,1585,2104], backgroundColor: '#f87171', borderRadius: 6 },
+                { label: 'After',  data: [284, 913,1281], backgroundColor: '#4ade80', borderRadius: 6 } ] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top', labels: { color: '#ededed' } } }, scales: { x: { grid: { display: false } }, y: { grid: GRID, title: { display: true, text: 'ms', color: '#8a8a96' } } } }
+    });
+  });
+</script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"7f7b0fd8732c4326aae4b9d58d5c514a","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
