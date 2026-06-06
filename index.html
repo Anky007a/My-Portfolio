@@ -990,6 +990,7 @@
           <a href="#career">Career</a>
           <a href="#leadership">Leadership</a>
           <a href="#project">Featured Build</a>
+          <a href="#sentinel-live-evidence">Live Evidence</a>
           <a href="#bugs">Bug Wall</a>
           <a href="#performance">Performance</a>
           <a href="#playbook">Playbook</a>
@@ -1006,7 +1007,7 @@
         I direct <span class="accent">quality.</span>
       </h1>
       <p class="anky-hero-sub">
-        <strong>Quality Engineering Manager &amp; Test Architect</strong> — 11+ years driving release governance, people management, and shift-left automation across <strong>30+ enterprise apps</strong>. Most recently: <strong>directed Claude AI through a 1,444-test, 99.8%-pass production build</strong> under a 512MB pod RAM ceiling.
+        <strong>Quality Engineering Manager &amp; Test Architect</strong> — 11+ years driving release governance, people management, and shift-left automation across <strong>30+ enterprise apps</strong>. Most recently: <strong>directed Claude AI through a 1,640-test, 99.94%-pass production build</strong> under a 512MB pod RAM ceiling.
       </p>
       
       <div class="anky-hero-availability">
@@ -1036,11 +1037,11 @@
           <div class="l">Enterprise Apps Owned</div>
         </div>
         <div class="anky-hstat">
-          <div class="v cyan">1,444</div>
+          <div class="v cyan">1,640</div>
           <div class="l">Tests · Latest Build</div>
         </div>
         <div class="anky-hstat">
-          <div class="v accent">99.8%</div>
+          <div class="v accent">99.94%</div>
           <div class="l">Pass Rate</div>
         </div>
         <div class="anky-hstat">
@@ -1233,7 +1234,7 @@
           <ul class="anky-features-list">
             <li><strong>The Stack:</strong> FastAPI, React, Tailwind CSS, MongoDB, ChartJS.</li>
             <li><strong>Under Constraints:</strong> Strict 512 MB Pod memory ceiling.</li>
-            <li><strong>Test Rigour:</strong> 1,444 automated test scripts (99.8% pass rate).</li>
+            <li><strong>Test Rigour:</strong> 1,640 automated test scripts (99.94% pass rate).</li>
             <li><strong>Coverage:</strong> 0.9 : 1 Test to Product Line-of-Code ratio.</li>
           </ul>
           
@@ -1265,7 +1266,7 @@
                 <ul class="anky-ai-list">
                   <li>Generated code blocks on demand</li>
                   <li>Refactored order routers</li>
-                  <li>Wrote 1,444 test files</li>
+                  <li>Wrote 1,640 test files</li>
                   <li>Optimized cache systems</li>
                 </ul>
               </div>
@@ -1273,6 +1274,151 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <hr class="anky-divider">
+
+    <!-- ───────── SENTINEL: LIVE QA EVIDENCE (deep-dive sub-section) ───────── -->
+    <section id="sentinel-live-evidence" class="anky-section">
+      <div class="anky-section-label">04B — Sentinel · Live QA Evidence</div>
+      <h2>From acceptance criteria<br>to <span class="accent">production-verified</span> rollout.</h2>
+      <p class="anky-section-desc">Concrete artefacts from the most recent release cycle — Monday-bell &ldquo;hardlock&rdquo; that flipped 5 production env knobs with documented +₹162K historical P&amp;L delta and zero made-worse trades across a 594-trade A/B backtest.</p>
+
+      <!-- Key release metrics -->
+      <div class="anky-pitch-grid" style="margin-bottom: 32px;">
+        <div class="anky-pitch-card">
+          <div class="num">594</div>
+          <h3>Historical Trades Backtested</h3>
+          <p>Decision-snapshot A/B harness using recorded <code>peak_pct</code> as ground truth — methodology I personally chose after rejecting a fidelity-flawed tick-replay first attempt.</p>
+        </div>
+        <div class="anky-pitch-card">
+          <div class="num">0</div>
+          <h3>Trades Made Worse</h3>
+          <p>Across all three ratio sweeps (0.30 / 0.40 / 0.50). The &ldquo;monotonic improvement, zero made-worse&rdquo; finding was the acceptance criterion I demanded before signing off on 0.50.</p>
+        </div>
+        <div class="anky-pitch-card">
+          <div class="num">+₹162 K</div>
+          <h3>Projected P&amp;L Delta</h3>
+          <p>Full-history counterfactual. Today's PROD pattern alone projects <strong>+₹20.9K</strong> daily improvement — verified via post-deploy curl on <code>/api/ops/hardlock-config</code>.</p>
+        </div>
+      </div>
+
+      <!-- QA Workflow / How I drive the agent -->
+      <div class="anky-card" style="margin-bottom: 28px;">
+        <h3 class="accent" style="font-size: 18px; margin-bottom: 14px;">QA Workflow — How I direct the AI developer</h3>
+        <ol class="anky-features-list" style="counter-reset: step;">
+          <li><strong>Requirement framing</strong> — I author acceptance criteria in plain English (&ldquo;ratio sweep must show 0 trades made worse&rdquo;).</li>
+          <li><strong>Implementation hand-off</strong> — Agent builds the test fixture / harness / endpoint.</li>
+          <li><strong>Audit</strong> — I review the diff. Signature mismatches, hot-path <code>print()</code> calls, and state-dict corruption patterns get <strong>rejected before merge</strong>.</li>
+          <li><strong>Pytest gate</strong> — Full suite must show <strong>1,640 / 0 failed / ≤101 skipped</strong>.</li>
+          <li><strong>Smoke probe</strong> — Playwright screenshot + curl against <code>/api/ops/*</code> endpoints.</li>
+          <li><strong>Ship-dark</strong> — Env flag default <code>OFF</code> on first PROD deploy.</li>
+          <li><strong>Observation window</strong> — One trading session of dashboards before flipping ON.</li>
+          <li><strong>Counterfactual sign-off</strong> — A/B backtest must show net-positive across all symbols.</li>
+          <li><strong>Live verification</strong> — Post-flip curl on <code>/api/ops/hardlock-config</code> confirms PROD env picked up the change.</li>
+        </ol>
+      </div>
+
+      <!-- Pushback examples -->
+      <div class="anky-card" style="margin-bottom: 28px;">
+        <h3 class="cyan" style="font-size: 18px; margin-bottom: 14px;">Real Pushback Examples — Rejected Merges in this Release</h3>
+        <p style="margin: 0 0 12px;">Four separate AI-generated code suggestions were rejected before they touched production:</p>
+        <ul class="anky-features-list">
+          <li><strong>&ldquo;Sensex whipsaw filter&rdquo; snippet</strong> — used a one-sided OBI scale when the codebase uses signed [-1, +1]. Would have biased the bot bullish-only on SENSEX. <span class="accent">Replaced with a 1-line .env tighten.</span></li>
+          <li><strong>&ldquo;Zero-allocation NumPy pipeline&rdquo; rewrite</strong> — mathematically disproved (existing Python dict path is 2,615× faster than the latency budget). <span class="accent">Replaced with WS-sync OBI fast-path + REST circuit breaker.</span></li>
+          <li><strong>&ldquo;Virtual tick replay engine&rdquo;</strong> — wrong function signature on <code>evaluate_obi_exhaustion</code> (would have <code>TypeError</code>'d on the first call), <code>print()</code> in a hot replay loop, and corrupted <code>PER_SYMBOL_STATE</code>. <span class="accent">Replaced with decision-snapshot A/B harness.</span></li>
+          <li><strong>State-dict regression caught post-merge</strong> — OBI hot-path stored its running-flag inside <code>PER_SYMBOL_STATE</code>, crashing the safety loop with <code>'bool' object has no attribute 'get'</code>. <span class="accent">Caught in 4 minutes via supervisor log tail; fixed by moving to module-level state.</span></li>
+        </ul>
+      </div>
+
+      <!-- Live production probe -->
+      <div class="anky-grid-2">
+        <div class="anky-card">
+          <h3 class="accent" style="font-size: 16px; margin-bottom: 10px;">Live Production Config Probe</h3>
+          <p style="color: var(--muted); font-size: 13px; margin: 0 0 10px;">
+            Self-service QA endpoint I demanded so every deploy is verifiable in one curl:
+          </p>
+          <pre style="background:#0a0f1a; border:1px solid #1f2a40; border-radius:6px; padding:12px; color:#c9d6e8; font-size:12px; overflow-x:auto; font-family:'JetBrains Mono',monospace; margin:0;">$ curl &lt;PROD&gt;/api/ops/hardlock-config
+{
+  "obi_ws_hot_path":      { "enabled": true, "interval_sec": 0.2 },
+  "rest_circuit_breaker": { "enabled": true, "threshold_ms": 3000 },
+  "dynamic_fee_floor":    { "enabled": true,
+                            "floor_ratio": <span style="color:#00d4aa;">0.5</span> },
+  "obi_gates_per_symbol": { "NIFTY": 0.55, "BANKNIFTY": 0.55,
+                            "SENSEX": <span style="color:#00d4aa;">0.7</span> }
+}</pre>
+        </div>
+
+        <div class="anky-card">
+          <h3 class="accent" style="font-size: 16px; margin-bottom: 10px;">Latest Pytest Run</h3>
+          <p style="color: var(--muted); font-size: 13px; margin: 0 0 10px;">
+            Full backend regression, current session:
+          </p>
+          <pre style="background:#0a0f1a; border:1px solid #1f2a40; border-radius:6px; padding:12px; color:#c9d6e8; font-size:12px; overflow-x:auto; font-family:'JetBrains Mono',monospace; margin:0;">$ pytest tests/ --ignore=tests/_archive -q
+
+........................................ [ 12%]
+........................................ [ 36%]
+........................................ [ 60%]
+........................................ [ 84%]
+..................                        [100%]
+
+<span style="color:#00d4aa;">1640 passed</span>, 101 skipped, 1 flake* in 28.96s
+<span style="color:#8aa0bd;">* Market-hours-dependent test; documented
+  as known limitation, not regression.</span></pre>
+        </div>
+      </div>
+
+      <!-- Testing technique grid -->
+      <h3 style="font-size: 18px; margin: 36px 0 14px;" class="cyan">Testing Techniques Used</h3>
+      <div class="anky-grid-2">
+        <div class="anky-card">
+          <h3 class="accent" style="font-size: 15px; margin-bottom: 8px;">Unit &amp; Integration</h3>
+          <ul class="anky-features-list" style="font-size: 14px;">
+            <li><strong>pytest</strong> with <code>asyncio_mode=auto</code> — 1,640 specs across 200+ files</li>
+            <li><strong>FastAPI TestClient</strong> for endpoint contract tests</li>
+            <li><strong>monkeypatched env fixtures</strong> for full test isolation</li>
+            <li><strong>Boundary tests</strong> on the dynamic fee floor at ₹5 / ₹10 / ₹100 premiums</li>
+          </ul>
+        </div>
+        <div class="anky-card">
+          <h3 class="accent" style="font-size: 15px; margin-bottom: 8px;">E2E &amp; Behavioural</h3>
+          <ul class="anky-features-list" style="font-size: 14px;">
+            <li><strong>Playwright</strong> browser flows — login → dashboard → trade history</li>
+            <li><strong>curl probes</strong> against deployed PROD for post-deploy verification</li>
+            <li><strong>Smoke tests</strong> as 1-shot screenshot checks (no test-pyramid bloat)</li>
+            <li><strong>A/B backtest harness</strong> — replay 594 historical trades vs new logic</li>
+          </ul>
+        </div>
+        <div class="anky-card">
+          <h3 class="accent" style="font-size: 15px; margin-bottom: 8px;">Operational / Production</h3>
+          <ul class="anky-features-list" style="font-size: 14px;">
+            <li><strong>Per-endpoint REST latency histograms</strong> (p50 / p95 / p99)</li>
+            <li><strong>Circuit breaker</strong> trips when Dhan p95 &gt; 3000 ms</li>
+            <li><strong>Memory watchdog</strong> 60s cycles + 380 MB critical alert</li>
+            <li><strong>Live config probe</strong> <code>/api/ops/hardlock-config</code> for deploy verification</li>
+          </ul>
+        </div>
+        <div class="anky-card">
+          <h3 class="accent" style="font-size: 15px; margin-bottom: 8px;">Risk &amp; Regression</h3>
+          <ul class="anky-features-list" style="font-size: 14px;">
+            <li><strong>Ship-dark protocol</strong> — every new tier default-OFF behind env flag</li>
+            <li><strong>One-session observation</strong> before flipping a knob ON</li>
+            <li><strong>Counterfactual P&amp;L modeling</strong> on every parameter sweep</li>
+            <li><strong>4 rejected merges</strong> on AI snippets with signature or hot-path violations</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Tech stack badges -->
+      <h3 style="font-size: 18px; margin: 36px 0 14px;" class="cyan">Full Technology Stack</h3>
+      <div class="anky-card">
+        <div style="margin-bottom: 8px;"><strong style="color:#00d4aa;">Frontend:</strong> React 18 · Vite · Tailwind CSS · shadcn/ui · Recharts</div>
+        <div style="margin-bottom: 8px;"><strong style="color:#00d4aa;">Backend:</strong> FastAPI · Python 3.11 · Uvicorn · httpx (async) · asyncio</div>
+        <div style="margin-bottom: 8px;"><strong style="color:#00d4aa;">Data &amp; Integration:</strong> MongoDB · Dhan HQ (WebSocket + REST) · Telegram Bot API</div>
+        <div style="margin-bottom: 8px;"><strong style="color:#ffb84d;">Testing:</strong> pytest · pytest-asyncio · FastAPI TestClient · Playwright · curl · tracemalloc</div>
+        <div><strong style="color:#00d4aa;">Infra &amp; Ops:</strong> Kubernetes (Emergent) · Supervisor · GitHub Pages</div>
+      </div>
+
     </section>
 
     <hr class="anky-divider">
@@ -1369,7 +1515,7 @@
         </div>
         
         <div class="anky-card" style="padding: 24px; display: flex; flex-direction: column; justify-content: center; text-align: left;">
-          <h3 class="accent" style="font-size: 20px; margin-bottom: 8px;">1,444 Test Scripts pass green</h3>
+          <h3 class="accent" style="font-size: 20px; margin-bottom: 8px;">1,640 Test Scripts pass green</h3>
           <p style="font-size:13px; color: var(--muted); line-height: 1.6;">
             A state-of-the-art options execution algorithm locked with strict correlation tracing. This is live assurance.
           </p>
@@ -1483,7 +1629,7 @@
       <hr class="resume-rule">
 
       <div class="resume-section-title">Professional Summary</div>
-      <p>Quality Engineering Manager and Test Architect with <strong>11+ years</strong> driving QA strategy, release governance, and people management across enterprise-scale Agile/DevOps environments. Achieved <strong>99.8% test pass rate</strong> and <strong>95–98% on-time release delivery</strong> across <strong>30+ applications</strong> by combining shift-left practices, CI/CD integration, and AI-assisted test planning. Most recently directed Claude AI through a 1,444-test, 99.8%-pass live-money trading-platform build under a 512MB RAM ceiling — validating AI-generated code and owning every quality gate. Proven people leader: built and mentored high-performing QA teams, delivered <strong>2 promotions</strong>, reduced manual testing effort by <strong>40%</strong>, and improved team productivity by <strong>25–35%</strong>. Expertise spans mobile automation (Espresso, XCUITest, Appium), API/regression testing, performance testing, AI/ML output validation, and data-pipeline quality.</p>
+      <p>Quality Engineering Manager and Test Architect with <strong>11+ years</strong> driving QA strategy, release governance, and people management across enterprise-scale Agile/DevOps environments. Achieved <strong>99.94% test pass rate</strong> and <strong>95–98% on-time release delivery</strong> across <strong>30+ applications</strong> by combining shift-left practices, CI/CD integration, and AI-assisted test planning. Most recently directed Claude AI through a 1,640-test, 99.94%-pass live-money trading-platform build under a 512MB RAM ceiling — validating AI-generated code and owning every quality gate. Proven people leader: built and mentored high-performing QA teams, delivered <strong>2 promotions</strong>, reduced manual testing effort by <strong>40%</strong>, and improved team productivity by <strong>25–35%</strong>. Expertise spans mobile automation (Espresso, XCUITest, Appium), API/regression testing, performance testing, AI/ML output validation, and data-pipeline quality.</p>
 
       <div class="resume-section-title">Key Skills &amp; Technologies</div>
       <ul class="resume-skills">
@@ -1500,7 +1646,7 @@
         <div class="fmeta"><strong>Role:</strong> QA Manager + Product Owner &nbsp;·&nbsp; <strong>AI Agent:</strong> Claude AI &nbsp;·&nbsp; <strong>Status:</strong> Completed &nbsp;·&nbsp; <strong>Full Showcase:</strong> <a href="https://anky007a.github.io/My-Portfolio" target="_blank" style="color: #b8801c; font-weight:bold;">anky007a.github.io/My-Portfolio</a></div>
         <ul style="list-style-type: disc; margin-left: 20px; line-height: 1.5;">
           <li>Directed Claude AI as the engineering executor — authored acceptance criteria, NFRs, and defect briefs as precision prompts; reviewed, challenged, and rejected AI-generated code that violated quality standards. <strong>Agentic QA Leadership:</strong> applying professional QA rigour to AI-generated codebases.</li>
-          <li>Drove <strong>~1,444 backend tests</strong> to a <strong>99.8% pass rate</strong> under a strict <strong>512 MB pod RAM ceiling</strong> — auditing AI test coverage strategy and enforcing lock-test discipline on every defect fix.</li>
+          <li>Drove <strong>~1,640 backend tests</strong> to a <strong>99.94% pass rate</strong> under a strict <strong>512 MB pod RAM ceiling</strong> — auditing AI test coverage strategy and enforcing lock-test discipline on every defect fix.</li>
           <li>Identified a <strong>PROD memory regression (351 MB idle)</strong> and a critical <strong>MANUAL mis-tag bug</strong> from production evidence; traced root cause 3 layers below the symptom (chunked-order correlationId clobber in <em>routes/orders.py</em>); refused patch-only fixes and directed end-to-end remediation.</li>
           <li>Established <strong>PROD ↔ PREVIEW forensic parity</strong>, correlationId audit trail, and sentinel-decisions logging — every blocked or executed trade traceable end-to-end.</li>
           <li>Enforced a <strong>"Simple-Thief" architecture mandate</strong> — rejected over-engineered institutional gates, reducing defect surface area and prioritising observability over abstraction.</li>
