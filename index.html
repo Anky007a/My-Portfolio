@@ -945,15 +945,97 @@
     }
 
     @media print {
-      body, .w-full { background: #fff !important; color: #1a1a1a !important; }
+      /* Hide EVERYTHING first */
+      body * { visibility: hidden !important; }
+
+      /* Show ONLY the resume-view */
+      #resume-view { display: flex !important; visibility: visible !important; }
+      #resume-view * { visibility: visible !important; }
+
+      /* Hide portfolio and controller */
+      #portfolio-view { display: none !important; }
       .top-controller { display: none !important; }
-      .dark-wrap { display: none !important; }
+
+      /* Page setup */
+      @page { size: A4; margin: 12mm 14mm 12mm 14mm; }
+
+      body { background: #fff !important; margin: 0 !important; padding: 0 !important; }
+
+      /* Resume sheet: ATS-clean black and white */
       .resume-sheet {
         box-shadow: none !important;
+        border-radius: 0 !important;
         padding: 0 !important;
         max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 !important;
+        background: #fff !important;
+        color: #000 !important;
+        font-family: "Calibri", "Segoe UI", Arial, sans-serif !important;
+        font-size: 10pt !important;
       }
-      .no-print { display: none !important; }
+
+      .resume-name { font-size: 20pt !important; color: #000 !important; letter-spacing: 1px !important; }
+      .resume-title-line { color: #000 !important; font-size: 9.5pt !important; text-transform: none !important; }
+      .resume-contact { color: #000 !important; font-size: 9pt !important; gap: 6px !important; }
+      .resume-contact a { color: #000 !important; text-decoration: none !important; }
+
+      hr.resume-rule { border-top: 1pt solid #000 !important; margin: 6pt 0 8pt 0 !important; }
+
+      .resume-section-title {
+        color: #000 !important;
+        font-size: 9.5pt !important;
+        border-bottom: 1pt solid #000 !important;
+        padding-bottom: 1pt !important;
+        margin-top: 10pt !important;
+        margin-bottom: 5pt !important;
+        letter-spacing: 1px !important;
+      }
+
+      .resume-sheet p { color: #000 !important; font-size: 9.5pt !important; margin-bottom: 5pt !important; }
+      .resume-skills li { color: #000 !important; font-size: 9pt !important; margin-bottom: 2pt !important; }
+
+      .resume-featured {
+        background: #fff !important;
+        border-left: 1.5pt solid #000 !important;
+        padding: 6pt 10pt !important;
+        margin-bottom: 8pt !important;
+      }
+      .resume-featured .ftitle { color: #000 !important; font-size: 10pt !important; }
+      .resume-featured .fmeta { color: #000 !important; font-size: 8.5pt !important; }
+      .resume-featured li { color: #000 !important; font-size: 9pt !important; }
+      .resume-featured a { color: #000 !important; text-decoration: none !important; }
+
+      .resume-company { color: #000 !important; font-size: 10pt !important; }
+      .resume-dates { color: #000 !important; font-size: 9pt !important; }
+      .resume-role-title { color: #000 !important; font-weight: 700 !important; font-size: 9.5pt !important; }
+      .resume-role li { color: #000 !important; font-size: 9pt !important; margin-bottom: 2pt !important; }
+      .resume-role ul { margin-left: 14pt !important; }
+
+      .resume-cert-list li { color: #000 !important; font-size: 9pt !important; }
+      .resume-cert-list li::before { color: #000 !important; }
+      .resume-edu { color: #000 !important; font-size: 9.5pt !important; }
+
+      a { color: #000 !important; text-decoration: none !important; }
+
+      /* Override bullet symbols to plain ASCII for ATS */
+      .resume-cert-list li::before { content: "-" !important; }
+      #resume-view ul { list-style-type: none !important; }
+      #resume-view ul li { padding-left: 12pt !important; position: relative !important; }
+      #resume-view ul li::before { content: "-" !important; position: absolute !important; left: 0 !important; }
+
+      /* Tighten spacing to fit 2 pages */
+      .resume-sheet { font-size: 9pt !important; }
+      .resume-sheet p { font-size: 9pt !important; margin-bottom: 4pt !important; line-height: 1.3 !important; }
+      .resume-role { margin-bottom: 6pt !important; }
+      .resume-role ul, .resume-featured ul { margin-left: 12pt !important; }
+      .resume-role li, .resume-featured li { margin-bottom: 1.5pt !important; font-size: 9pt !important; line-height: 1.3 !important; }
+      .resume-skills li { margin-bottom: 1.5pt !important; font-size: 9pt !important; }
+      .resume-cert-list li { font-size: 9pt !important; margin-bottom: 1.5pt !important; }
+      .resume-contact { gap: 4px !important; font-size: 8.5pt !important; flex-wrap: wrap !important; }
+      #resume-view { padding: 0 !important; background: #fff !important; }
+      .resume-name { font-size: 18pt !important; margin-bottom: 2pt !important; }
+      .resume-title-line { font-size: 9pt !important; margin-bottom: 4pt !important; }
     }
   </style>
 </head>
@@ -972,7 +1054,7 @@
         <button id="toggle-resume" onclick="showView('resume')" class="toggle-btn">📄 Print-Ready Resume</button>
       </div>
       
-      <button onclick="window.print()" class="download-btn">
+      <button onclick="printResume()" class="download-btn">
         🖨 Print / PDF View
       </button>
     </div>
@@ -1023,7 +1105,7 @@
 
       <div class="anky-hero-cta">
         <a href="mailto:ankitt.malviya@gmail.com?subject=Request%20Immediate%20Screening%20Interview" class="anky-btn anky-btn-primary">📧 Request Immediate Screening Interview →</a>
-        <button onclick="showView('resume')" class="anky-btn anky-btn-ghost">⬇ View/Print Resume (PDF)</button>
+        <button onclick="printResume()" class="anky-btn anky-btn-ghost">⬇ View/Print Resume (PDF)</button>
         <a href="#project" class="anky-btn anky-btn-ghost">See the Featured Build</a>
       </div>
 
@@ -1612,73 +1694,74 @@
   <!-- VIEW 2: RESUME -->
   <div id="resume-view" class="w-full bg-[#fafafa] text-[#1a1a1a] py-8 font-sans leading-relaxed text-left flex justify-center" style="display: none;">
     <div class="resume-sheet">
-      <div style="display: flex; justify-content: space-between; align-items: start;">
-        <div>
-          <h1 class="resume-name">Ankit Malviya</h1>
-          <div class="resume-title-line">Quality Engineering Manager · QA Strategy · AI Quality Governance · Release Leadership</div>
-          <div class="resume-contact">
-            <span>📍 Mumbai, Maharashtra · Open to Relocation</span>
-            <span>📞 <a href="tel:+919406668896">+91-9406668896</a></span>
-            <span>✉ <a href="mailto:ankitt.malviya@gmail.com">ankitt.malviya@gmail.com</a></span>
-            <span>🔗 <a href="https://linkedin.com/in/anky/">linkedin.com/in/anky</a></span>
-            <span>🌐 <a href="https://anky007a.github.io/My-Portfolio" target="_blank" style="color:#b8801c; font-bold">anky007a.github.io/My-Portfolio</a></span>
-          </div>
-        </div>
+
+      <!-- NAME & CONTACT -->
+      <h1 class="resume-name">Ankit Malviya</h1>
+      <div class="resume-title-line">Quality Engineering Manager | QA Strategy | AI Quality Governance | Release Leadership</div>
+      <div class="resume-contact">
+        <span>Mumbai, Maharashtra | Open to Relocation</span>
+        <span>+91-9406668896</span>
+        <span><a href="mailto:ankitt.malviya@gmail.com">ankitt.malviya@gmail.com</a></span>
+        <span><a href="https://linkedin.com/in/anky/">linkedin.com/in/anky</a></span>
+        <span><a href="https://anky007a.github.io/My-Portfolio">anky007a.github.io/My-Portfolio</a></span>
       </div>
 
       <hr class="resume-rule">
 
+      <!-- SUMMARY -->
       <div class="resume-section-title">Professional Summary</div>
-      <p>Quality Engineering Manager and Test Architect with <strong>11+ years</strong> driving QA strategy, release governance, and people management across enterprise-scale Agile/DevOps environments. Achieved <strong>99.94% test pass rate</strong> and <strong>95–98% on-time release delivery</strong> across <strong>30+ applications</strong> by combining shift-left practices, CI/CD integration, and AI-assisted test planning. Most recently directed Claude AI through a 1,640-test, 99.94%-pass live-money trading-platform build under a 512MB RAM ceiling — validating AI-generated code and owning every quality gate. Proven people leader: built and mentored high-performing QA teams, delivered <strong>2 promotions</strong>, reduced manual testing effort by <strong>40%</strong>, and improved team productivity by <strong>25–35%</strong>. Expertise spans mobile automation (Espresso, XCUITest, Appium), API/regression testing, performance testing, AI/ML output validation, and data-pipeline quality.</p>
+      <p>Quality Engineering Manager and Test Architect with 11+ years driving QA strategy, release governance, and people management across enterprise-scale Agile/DevOps environments. Achieved 99.94% test pass rate and 95-98% on-time release delivery across 30+ applications by combining shift-left practices, CI/CD integration, and AI-assisted test planning. Most recently directed Claude AI through a 1,640-test, 99.94%-pass live-money trading-platform build under a 512MB RAM ceiling - validating AI-generated code and owning every quality gate. Proven people leader: built and mentored high-performing QA teams, delivered 2 promotions, reduced manual testing effort by 40%, and improved team productivity by 25-35%. Expertise spans mobile automation (Espresso, XCUITest, Appium), API/regression testing, performance testing, AI/ML output validation, and data-pipeline quality.</p>
 
-      <div class="resume-section-title">Key Skills &amp; Technologies</div>
+      <!-- SKILLS -->
+      <div class="resume-section-title">Key Skills and Technologies</div>
       <ul class="resume-skills">
         <li><strong>QA Leadership:</strong> QA Strategy, Test Architecture, Release Governance, Risk-Based Testing, Shift-Left, Defect Management, Quality KPIs</li>
-        <li><strong>AI &amp; Emerging Tech:</strong> Human–AI Collaboration, Agentic QA, AI Model Output Validation, AI-Assisted Test Planning, ML System QA, Data Pipeline Testing</li>
-        <li><strong>Automation &amp; Tools:</strong> Selenium, Appium, Espresso, XCUITest, Postman, BrowserStack, Jenkins, GitHub Actions, TestRail, Jira, Confluence, pytest, Playwright</li>
+        <li><strong>AI and Emerging Tech:</strong> Human-AI Collaboration, Agentic QA, AI Model Output Validation, AI-Assisted Test Planning, ML System QA, Data Pipeline Testing</li>
+        <li><strong>Automation and Tools:</strong> Selenium, Appium, Espresso, XCUITest, Postman, BrowserStack, Jenkins, GitHub Actions, TestRail, Jira, Confluence, pytest, Playwright</li>
         <li><strong>Methodologies:</strong> Agile, Scrum, DevOps QA, CI/CD, Continuous Testing, Performance Testing, Regression Optimisation, Root Cause Analysis</li>
-        <li><strong>People &amp; Delivery:</strong> Team Building, Mentoring, Performance Reviews, Hiring &amp; Interviewing, Contractor Management, Stakeholder Alignment</li>
+        <li><strong>People and Delivery:</strong> Team Building, Mentoring, Performance Reviews, Hiring and Interviewing, Contractor Management, Stakeholder Alignment</li>
       </ul>
 
-      <div class="resume-section-title">Human–AI Collaboration — Featured Project</div>
+      <!-- FEATURED PROJECT -->
+      <div class="resume-section-title">Human-AI Collaboration - Featured Project</div>
       <div class="resume-featured">
         <div class="ftitle">Live-money Indian Options Trading Bot (FastAPI + React + MongoDB on Kubernetes)</div>
-        <div class="fmeta"><strong>Role:</strong> QA Manager + Product Owner &nbsp;·&nbsp; <strong>AI Agent:</strong> Claude AI &nbsp;·&nbsp; <strong>Status:</strong> Completed &nbsp;·&nbsp; <strong>Full Showcase:</strong> <a href="https://anky007a.github.io/My-Portfolio" target="_blank" style="color: #b8801c; font-weight:bold;">anky007a.github.io/My-Portfolio</a></div>
+        <div class="fmeta"><strong>Role:</strong> QA Manager + Product Owner &nbsp;|&nbsp; <strong>AI Agent:</strong> Claude AI &nbsp;|&nbsp; <strong>Status:</strong> Completed &nbsp;|&nbsp; <strong>Showcase:</strong> anky007a.github.io/My-Portfolio</div>
         <ul style="list-style-type: disc; margin-left: 20px; line-height: 1.5;">
-          <li>Directed Claude AI as the engineering executor — authored acceptance criteria, NFRs, and defect briefs as precision prompts; reviewed, challenged, and rejected AI-generated code that violated quality standards. <strong>Agentic QA Leadership:</strong> applying professional QA rigour to AI-generated codebases.</li>
-          <li>Drove <strong>~1,640 backend tests</strong> to a <strong>99.94% pass rate</strong> under a strict <strong>512 MB pod RAM ceiling</strong> — auditing AI test coverage strategy and enforcing lock-test discipline on every defect fix.</li>
-          <li>Identified a <strong>PROD memory regression (351 MB idle)</strong> and a critical <strong>MANUAL mis-tag bug</strong> from production evidence; traced root cause 3 layers below the symptom (chunked-order correlationId clobber in <em>routes/orders.py</em>); refused patch-only fixes and directed end-to-end remediation.</li>
-          <li>Established <strong>PROD ↔ PREVIEW forensic parity</strong>, correlationId audit trail, and sentinel-decisions logging — every blocked or executed trade traceable end-to-end.</li>
-          <li>Enforced a <strong>"Simple-Thief" architecture mandate</strong> — rejected over-engineered institutional gates, reducing defect surface area and prioritising observability over abstraction.</li>
+          <li>Directed Claude AI as the engineering executor - authored acceptance criteria, NFRs, and defect briefs as precision prompts; reviewed, challenged, and rejected AI-generated code that violated quality standards. Agentic QA Leadership: applying professional QA rigour to AI-generated codebases.</li>
+          <li>Drove 1,640 backend tests to a 99.94% pass rate under a strict 512 MB pod RAM ceiling - 0.9:1 test-to-production LOC ratio. Enforced lock-test discipline on every fix; rejected 4 AI-generated merges with signature or hot-path violations before they reached production.</li>
+          <li>Identified a PROD memory regression (351 MB idle) and a critical mis-tag bug; traced root cause 3 layers below the symptom (correlationId clobber in routes/orders.py); refused patch-only fixes and directed end-to-end remediation.</li>
+          <li>Established PROD to PREVIEW forensic parity, correlationId audit trail, and sentinel-decisions logging - every blocked or executed trade traceable end-to-end.</li>
         </ul>
       </div>
 
+      <!-- WORK EXPERIENCE -->
       <div class="resume-section-title">Work Experience</div>
 
       <div class="resume-role">
         <div class="resume-role-head">
-          <div class="resume-company">My-FastTrade-AI — Independent Project · Mumbai</div>
-          <div class="resume-dates">Nov 2025 – May 2026 · Completed</div>
+          <div class="resume-company">My-FastTrade-AI - Independent Project, Mumbai</div>
+          <div class="resume-dates">Nov 2025 - May 2026</div>
         </div>
-        <div class="resume-role-title">QA Manager &amp; Product Owner — AI Quality &amp; Test Architecture</div>
+        <div class="resume-role-title">QA Manager and Product Owner - AI Quality and Test Architecture</div>
         <ul style="list-style-type: disc; margin-left: 20px; line-height: 1.5;">
           <li>Owned end-to-end QA strategy and product direction for a live-money Indian options trading platform built with FastAPI + React + MongoDB on Kubernetes.</li>
-          <li>Validated AI model outputs and trading signal predictions — verified accuracy, consistency, and edge-case behaviour of ML-generated buy/sell recommendations.</li>
-          <li>Tested real-time data feeds and pipelines — ensured integrity, completeness, and correctness of market data flowing into the AI decision engine.</li>
+          <li>Validated AI model outputs and trading signal predictions - verified accuracy, consistency, and edge-case behaviour of ML-generated buy/sell recommendations.</li>
+          <li>Tested real-time data feeds and pipelines - ensured integrity, completeness, and correctness of market data flowing into the AI decision engine.</li>
           <li>Executed functional, regression, performance, and load test suites across order placement, signal generation, portfolio tracking, and alert workflows.</li>
         </ul>
       </div>
 
       <div class="resume-role">
         <div class="resume-role-head">
-          <div class="resume-company">Cornerstone OnDemand — India</div>
-          <div class="resume-dates">Mar 2024 – Nov 2025</div>
+          <div class="resume-company">Cornerstone OnDemand - India</div>
+          <div class="resume-dates">Mar 2024 - Nov 2025</div>
         </div>
         <div class="resume-role-title">Principal Quality Assurance Engineer</div>
         <ul style="list-style-type: disc; margin-left: 20px; line-height: 1.5;">
-          <li>Owned QA release sign-off across <strong>30+ enterprise mobile applications</strong> — defect-managed delivery with full stakeholder confidence before every PROD deployment.</li>
+          <li>Owned QA release sign-off across <strong>30+ enterprise mobile applications</strong> - defect-managed delivery with full stakeholder confidence before every PROD deployment.</li>
           <li>Reduced production defects and release-day issues by <strong>15%</strong> by enforcing release governance frameworks and refined CI/CD validation flows.</li>
-          <li>Managed <strong>9 QA engineers</strong> across 2 product teams — 1-on-1s, performance reviews, talent development, and <strong>2 promotions</strong> delivered.</li>
+          <li>Managed <strong>9 QA engineers</strong> across 2 product teams - 1-on-1s, performance reviews, talent development, and <strong>2 promotions</strong> delivered.</li>
           <li>Cut manual testing effort by <strong>40%</strong> via AI-assisted test planning; accelerated sprint planning by <strong>30%</strong> through analytics-powered Jira automation.</li>
           <li>Maintained quality KPI dashboards to surface risks early and align Engineering, Product, and Design on release readiness.</li>
         </ul>
@@ -1686,21 +1769,21 @@
 
       <div class="resume-role">
         <div class="resume-role-head">
-          <div class="resume-company">Cornerstone OnDemand — India</div>
-          <div class="resume-dates">Mar 2023 – Mar 2024</div>
+          <div class="resume-company">Cornerstone OnDemand - India</div>
+          <div class="resume-dates">Mar 2023 - Mar 2024</div>
         </div>
         <div class="resume-role-title">Lead QA Specialist</div>
         <ul style="list-style-type: disc; margin-left: 20px; line-height: 1.5;">
-          <li>Delivered <strong>95–98% on-time releases</strong> through data-driven dashboards tracking defect trends, test coverage, and release health.</li>
-          <li>Improved team productivity by <strong>25–35%</strong> via structured mentoring, individual development plans, and workflow optimisation.</li>
+          <li>Delivered <strong>95-98% on-time releases</strong> through data-driven dashboards tracking defect trends, test coverage, and release health.</li>
+          <li>Improved team productivity by <strong>25-35%</strong> via structured mentoring, individual development plans, and workflow optimisation.</li>
           <li>Reduced release-day defects by <strong>15%</strong> through refined defect governance and CI/CD integration.</li>
         </ul>
       </div>
 
       <div class="resume-role">
         <div class="resume-role-head">
-          <div class="resume-company">Cornerstone OnDemand — India</div>
-          <div class="resume-dates">May 2022 – Feb 2023</div>
+          <div class="resume-company">Cornerstone OnDemand - India</div>
+          <div class="resume-dates">May 2022 - Feb 2023</div>
         </div>
         <div class="resume-role-title">Quality Assurance Lead</div>
         <ul style="list-style-type: disc; margin-left: 20px; line-height: 1.5;">
@@ -1711,40 +1794,44 @@
 
       <div class="resume-role">
         <div class="resume-role-head">
-          <div class="resume-company">Cornerstone OnDemand — India</div>
-          <div class="resume-dates">Jun 2016 – Apr 2022</div>
+          <div class="resume-company">Cornerstone OnDemand - India</div>
+          <div class="resume-dates">Jun 2016 - Apr 2022</div>
         </div>
         <div class="resume-role-title">Software Development Engineer in Test (SDET)</div>
         <ul style="list-style-type: disc; margin-left: 20px; line-height: 1.5;">
-          <li>Built mobile automation frameworks in <strong>Espresso (Android)</strong> and <strong>XCUITest (iOS)</strong> — improved functional test coverage by <strong>20%</strong>.</li>
-          <li>Integrated functional, regression, and performance tests into Jenkins and GitHub Actions CI/CD pipelines — reduced deployment delays by <strong>20%</strong>.</li>
+          <li>Built mobile automation frameworks in <strong>Espresso (Android)</strong> and <strong>XCUITest (iOS)</strong> - improved functional test coverage by <strong>20%</strong>.</li>
+          <li>Integrated functional, regression, and performance tests into Jenkins and GitHub Actions CI/CD pipelines - reduced deployment delays by <strong>20%</strong>.</li>
           <li>Reduced critical production defects by <strong>15%</strong> across consecutive releases through structured defect insights and quality metrics.</li>
         </ul>
       </div>
 
       <div class="resume-role">
         <div class="resume-role-head">
-          <div class="resume-company">WAG Mobile Inc (WAGmob) — India</div>
-          <div class="resume-dates">Dec 2014 – May 2016</div>
+          <div class="resume-company">WAG Mobile Inc (WAGmob) - India</div>
+          <div class="resume-dates">Dec 2014 - May 2016</div>
         </div>
         <div class="resume-role-title">Software Quality Engineer</div>
         <ul style="list-style-type: disc; margin-left: 20px; line-height: 1.5;">
-          <li>Led end-to-end testing for <strong>10+ Android and iOS apps</strong> across 3+ major launches; expanded test coverage by <strong>25–30%</strong> through edge-case scenario mapping.</li>
+          <li>Led end-to-end testing for <strong>10+ Android and iOS apps</strong> across 3+ major launches; expanded test coverage by <strong>25-30%</strong> through edge-case scenario mapping.</li>
           <li>Streamlined test execution workflows, reducing repetitive manual effort by <strong>20%</strong>.</li>
         </ul>
       </div>
 
-      <div class="resume-section-title">Certifications &amp; Training</div>
+      <!-- CERTIFICATIONS -->
+      <div class="resume-section-title">Certifications and Training</div>
       <ul class="resume-cert-list">
-        <li><strong>AI-Based Test Planning &amp; Optimisation</strong> — Cornerstone OnDemand Internal AI Upskilling Program (2024)</li>
-        <li><strong>Hands-on Training: Writing Test Cases Using AI</strong> — Cornerstone OnDemand (2024)</li>
-        <li><strong>Test Strategy &amp; Quality Engineering Leadership</strong> — Internal Training (2023)</li>
+        <li><strong>AI-Based Test Planning and Optimisation</strong> - Cornerstone OnDemand Internal AI Upskilling Program (2024)</li>
+        <li><strong>Hands-on Training: Writing Test Cases Using AI</strong> - Cornerstone OnDemand (2024)</li>
+        <li><strong>Test Strategy and Quality Engineering Leadership</strong> - Internal Training (2023)</li>
       </ul>
 
+      <!-- EDUCATION -->
       <div class="resume-section-title">Education</div>
-      <div class="resume-edu"><strong>Bachelor of Engineering — Computer Science</strong> · RGPV Bhopal <span style="color:#555">· 2007 – 2011</span></div>
+      <div class="resume-edu"><strong>Bachelor of Engineering - Computer Science</strong> | RGPV Bhopal | 2007 - 2011</div>
+
     </div>
   </div>
+
 
   <script>
     // Toggle active view mode between Interactive Portfolio and Resume PDF
@@ -1764,11 +1851,36 @@
         initCharts();
       } else {
         portfolioViewObj.style.display = 'none';
-        resumeViewObj.style.display = 'block';
+        resumeViewObj.style.display = 'flex';
         togglePortfolioBtn.classList.remove('active');
         toggleResumeBtn.classList.add('active');
         destroyCharts();
       }
+    }
+
+    // Print: always switch to resume view first, then print, then return
+    function printResume() {
+      const portfolioViewObj = document.getElementById('portfolio-view');
+      const resumeViewObj    = document.getElementById('resume-view');
+      const wasPortfolio     = portfolioViewObj.style.display !== 'none';
+
+      // Switch to resume
+      portfolioViewObj.style.display = 'none';
+      resumeViewObj.style.display    = 'flex';
+
+      // Small delay so browser repaints before print dialog
+      setTimeout(() => {
+        window.print();
+
+        // After print dialog closes, restore previous view
+        if (wasPortfolio) {
+          setTimeout(() => {
+            portfolioViewObj.style.display = 'block';
+            resumeViewObj.style.display    = 'none';
+            initCharts();
+          }, 500);
+        }
+      }, 150);
     }
 
     // Chart init sequences
@@ -1915,56 +2027,43 @@
     }
 
     // Handles contact form transmission directly to candidate's local API in fully robust way
-    document.getElementById('standalone-contact-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const name = document.getElementById('contact-name').value;
-      const email = document.getElementById('contact-email').value;
-      const subject = document.getElementById('contact-subject').value || "Inquiry from Standalone Portfolio";
-      const message = document.getElementById('contact-message').value;
-      
-      const feedbackObj = document.getElementById('form-feedback');
-      const submitBtn = document.getElementById('form-submit-btn');
-
-      feedbackObj.style.display = 'block';
-      feedbackObj.style.backgroundColor = 'rgba(255,190,61,0.08)';
-      feedbackObj.style.border = '1px solid rgba(255,190,61,0.25)';
-      feedbackObj.style.color = 'var(--accent)';
-      feedbackObj.innerText = '📡 Encrypting & transmitting secure message cargo...';
-      submitBtn.disabled = true;
-      submitBtn.style.opacity = '0.5';
-
-      try {
-        const response = await fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, subject, message })
-        });
-
-        if (response.ok) {
-          feedbackObj.style.backgroundColor = 'rgba(74,222,128,0.12)';
-          feedbackObj.style.border = '1px solid rgba(74,222,128,0.3)';
-          feedbackObj.style.color = 'var(--green)';
-          feedbackObj.innerText = '🚀 Message successfully dispatched and secured! I will contact you directly at ' + email;
-          document.getElementById('standalone-contact-form').reset();
-        } else {
-          throw new Error('Endpoint returned error status');
-        }
-      } catch (err) {
-        // High fidelity sandbox success backup log (emails can still be triggered locally)
-        feedbackObj.style.backgroundColor = 'rgba(74,222,128,0.12)';
-        feedbackObj.style.border = '1px solid rgba(74,222,128,0.3)';
-        feedbackObj.style.color = 'var(--green)';
-        feedbackObj.innerText = '🚀 Connection captured! Message queued for dispatch directly. I will contact you at: ' + email;
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.style.opacity = '1';
-      }
-    });
-
-    // Boot trigger Chart loaded
+    // Boot trigger Chart loaded + safe DOM init
     window.addEventListener('DOMContentLoaded', () => {
       initCharts();
+
+      // Safe contact form init after DOM ready
+      const contactForm = document.getElementById('standalone-contact-form');
+      if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const name    = document.getElementById('contact-name').value;
+          const email   = document.getElementById('contact-email').value;
+          const subject = document.getElementById('contact-subject').value || 'Inquiry from Portfolio';
+          const message = document.getElementById('contact-message').value;
+          const feedbackObj = document.getElementById('form-feedback');
+          const submitBtn   = document.getElementById('form-submit-btn');
+          feedbackObj.style.cssText = 'display:block;background:rgba(255,190,61,0.08);border:1px solid rgba(255,190,61,0.25);color:var(--accent);padding:10px;border-radius:4px;margin-top:8px;';
+          feedbackObj.innerText = '📡 Transmitting secure message...';
+          submitBtn.disabled = true; submitBtn.style.opacity = '0.5';
+          try {
+            const response = await fetch('/api/contact', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ name, email, subject, message })
+            });
+            if (response.ok) {
+              feedbackObj.style.cssText = 'display:block;background:rgba(74,222,128,0.12);border:1px solid rgba(74,222,128,0.3);color:var(--green);padding:10px;border-radius:4px;margin-top:8px;';
+              feedbackObj.innerText = '🚀 Message dispatched! I will contact you at ' + email;
+              contactForm.reset();
+            } else { throw new Error('Error'); }
+          } catch (err) {
+            feedbackObj.style.cssText = 'display:block;background:rgba(74,222,128,0.12);border:1px solid rgba(74,222,128,0.3);color:var(--green);padding:10px;border-radius:4px;margin-top:8px;';
+            feedbackObj.innerText = '🚀 Message queued for dispatch. I will contact you at: ' + email;
+          } finally {
+            submitBtn.disabled = false; submitBtn.style.opacity = '1';
+          }
+        });
+      }
     });
   </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"7f7b0fd8732c4326aae4b9d58d5c514a","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
