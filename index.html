@@ -231,6 +231,17 @@
       box-shadow: 0 0 10px var(--green);
     }
 
+    .animate-ping {
+      animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes ping {
+      75%, 100% {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+
     .anky-hero-contact {
       display: flex;
       flex-wrap: wrap;
@@ -646,7 +657,7 @@
       }
       .resume-featured .ftitle { color: #000 !important; font-size: 10pt !important; }
       .resume-featured .fmeta { color: #000 !important; font-size: 8.5pt !important; }
-      .resume-featured li { color: #000 !important; font-size: 9pt !important; }
+      .resume-featured li { color: #000 !important; font-size: 9pt !important; margin-bottom: 2pt !important; }
       .resume-featured a { color: #000 !important; text-decoration: none !important; }
 
       .resume-company { color: #000 !important; font-size: 10pt !important; }
@@ -685,7 +696,7 @@
       <a href="https://anky007a.github.io/My-Portfolio" target="_blank" class="alias-link">anky007a.github.io/My-Portfolio</a>
     </div>
 
-    <div class="flex-wrap" style="display: flex; gap: 10px; align-items: center;">
+    <div style="display: flex; gap: 10px; align-items: center;">
       <div class="view-toggles">
         <button id="toggle-portfolio" onclick="showView('portfolio')" class="toggle-btn active">💫 Interactive Portfolio</button>
         <button id="toggle-resume" onclick="showView('resume')" class="toggle-btn">📄 Print-Ready Resume</button>
@@ -1024,7 +1035,7 @@
 
       <div class="anky-card" style="margin-bottom: 28px;">
         <h3 class="accent" style="font-size: 18px; margin-bottom: 14px;">The Pipeline Verification Lifecycle</h3>
-        <ol class="anky-features-list" style="counter-reset: step;">
+        <ol class="anky-features-list">
           <li><strong>Requirement Mapping</strong> — Authoring unambiguous target conditions matching performance objectives.</li>
           <li><strong>Automated Execution</strong> — Managing localized environment harnesses to spin up test database nodes.</li>
           <li><strong>Diff Level Audits</strong> — Manually reviewing incoming code updates to block hot-path memory print statements or type inconsistencies.</li>
@@ -1218,7 +1229,7 @@ STATUS: REGRESSION SUITE SYSTEM SECURED</pre>
     <section id="contact" class="anky-cta-final">
       <div class="anky-section-label">08 — Direct Channels</div>
       <h2>Let's build resilient engineering systems</h2>
-      <p style="max-width: 600px; margin: 0 auto 32px; font-size:15px; color: var(--muted);" class="font-mono">
+      <p style="max-width: 600px; margin: 0 auto 32px; font-size:15px; color: var(--muted); font-family: 'JetBrains Mono', monospace;">
         Ankit Malviya — Quality Engineering Manager &amp; Test Architect<br>
         📍 Mumbai, Maharashtra · Open to Relocation
       </p>
@@ -1240,7 +1251,7 @@ STATUS: REGRESSION SUITE SYSTEM SECURED</pre>
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_next" value="https://anky007a.github.io/My-Portfolio/#contact-thanks" />
           <input type="text" name="_honey" style="display:none" />
-          <div class="form-row" style="margin-bottom: 15px;">
+          <div style="margin-bottom: 15px;">
             <label style="display:block; font-size:12px; margin-bottom:5px; color:var(--muted);">Your Name *</label>
             <input type="text" name="Name" required placeholder="e.g., Sarah Jenkins" style="width:100%; padding:10px; background:#1c1c22; border:1px solid var(--border); border-radius:6px; color:#fff;" />
           </div>
@@ -1254,7 +1265,7 @@ STATUS: REGRESSION SUITE SYSTEM SECURED</pre>
               <input type="text" name="Subject" placeholder="QE Leadership Role" style="width:100%; padding:10px; background:#1c1c22; border:1px solid var(--border); border-radius:6px; color:#fff;" />
             </div>
           </div>
-          <div class="form-row" style="margin-bottom: 20px;">
+          <div style="margin-bottom: 20px;">
             <label style="display:block; font-size:12px; margin-bottom:5px; color:var(--muted);">Message Details *</label>
             <textarea name="Message" required rows="4" placeholder="Describe the role details or screening timelines..." style="width:100%; padding:10px; background:#1c1c22; border:1px solid var(--border); border-radius:6px; color:#fff; resize:vertical;"></textarea>
           </div>
@@ -1263,12 +1274,12 @@ STATUS: REGRESSION SUITE SYSTEM SECURED</pre>
       </div>
     </section>
 
-    <footer class="anky-footer font-mono">
+    <footer style="border-top: 1px solid var(--border); padding: 40px 24px; text-align: center; font-size: 12px; color: var(--dim); max-width: 1200px; margin: 0 auto; font-family: 'JetBrains Mono', monospace;">
       © 2026 Ankit Malviya · Quality Engineering Manager · Managed with Absolute Discipline.
     </footer>
   </div>
 
-  <div id="resume-view" class="w-full bg-[#fafafa] text-[#1a1a1a] py-8 font-sans leading-relaxed text-left flex justify-center" style="display: none;">
+  <div id="resume-view" style="display: none; width: 100%; background: #fafafa; color: #1a1a1a; padding: 2rem 0; font-family: sans-serif; line-height: 1.6; text-align: left; justify-content: center;">
     <div class="resume-sheet">
 
       <h1 class="resume-name">Ankit Malviya</h1>
@@ -1364,7 +1375,7 @@ STATUS: REGRESSION SUITE SYSTEM SECURED</pre>
         <ul style="list-style-type: disc; margin-left: 20px; line-height: 1.5;">
           <li>Architected custom native mobile test automation frameworks from scratch using <strong>Espresso (Android)</strong> and <strong>XCUITest (iOS)</strong>, driving a <strong>20% expansion in total test coverage metrics</strong>.</li>
           <li>Embedded automated suite triggers directly into Jenkins and GitHub Actions continuous delivery pipelines, reducing overall build deployment lags by <strong>20%</strong>.</li>
-          <li>Analyzed multi-layered failure logs and system logs to execute forensic defect troubleshooting, reducing critical escape errors by <strong>15%</strong> across consecutive release loops.</li>
+          <li>Analyse multi-layered failure logs and system logs to execute forensic defect troubleshooting, reducing critical escape errors by <strong>15%</strong> across consecutive release loops.</li>
         </ul>
       </div>
 
