@@ -607,7 +607,8 @@
 
     @media print {
       body * { visibility: hidden !important; }
-      #resume-view { display: flex !important; visibility: visible !important; }
+      #resume-view, #resume-view * { visibility: visible !important; }
+      #resume-view { display: flex !important; }
       #portfolio-view { display: none !important; }
       .top-controller { display: none !important; }
 
